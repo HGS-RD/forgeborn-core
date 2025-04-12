@@ -1,16 +1,17 @@
-# Contributing to Forgeborn
+# Hillstrong Forgeborn – Internal Contribution Guidelines
 
-Thank you for your interest in contributing to Forgeborn!
+This repo is maintained by the Hillstrong engineering team and supports development of the AI-native software factory.
 
-## Getting Started
-- Clone the repo: `git clone https://github.com/YOUR_USERNAME/forgeborn-core.git`
-- Run the CLI: `factory new "Build a devops agent"`
-- Start the engine: `npm start` in `agent_execution_engine_v2/`
+## Contribution Scope
+- Internal contributors only (Hillstrong staff or contractors)
+- All changes must follow agent development standards
+- Contributions should reference a blueprint or RC task ID when relevant
 
-## Guidelines
-- Use branches for features/fixes
-- Document all agents in `docs/agents_summary.md`
-- Submit clean pull requests with clear intent
+## Process
+1. Create a branch for your feature or fix
+2. Run local blueprint + execution tests
+3. Submit a pull request with test logs attached
+4. Ensure alignment with existing trust/memory guardrails
 
-## Communication
-For questions, open an issue or contact the maintainer.
+## Support
+For onboarding, contact the project lead or refer to `docs/factory_overview.md`.

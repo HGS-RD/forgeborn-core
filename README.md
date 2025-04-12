@@ -1,38 +1,25 @@
-# Forgeborn Core
+# Forgeborn Core (Internal - Hillstrong)
 
-Forgeborn is an AI-native software factory designed to autonomously plan, execute, evaluate, and evolve software systems using recursive agent loops.
+**Forgeborn** is Hillstrong’s internal AI-native software factory. It enables recursive agent-based software development that plans, executes, evaluates, and evolves intelligent code systems automatically.
 
-## 🧠 Core Capabilities
-- Accepts natural language goals via CLI (`factory`)
-- Generates executable blueprints
-- Executes agents to fulfill tasks:
-  - Planning Agent
-  - Evaluator Agent
-  - Memory Steward
-  - Docs Agent
-  - Meta-Orchestrator
-- Stores results in memory and trust logs
-- Evolves the factory by closing recursive RC loops
+## 🧠 Capabilities
+- Accepts business goals through CLI
+- Autonomously generates blueprints
+- Executes planning, evaluation, memory, documentation, and governance
+- All interactions are logged, scored, and stored in memory
+- Designed for secure, private deployments across Hillstrong projects
 
-## 🚀 Getting Started
+## 🛡️ Security & Scope
+This repository is **private and proprietary**. All code, agents, and logic are for internal Hillstrong development use only. Do not distribute externally.
+
+## 🔁 Internal Usage Example
 ```bash
-factory new "Build a devops agent"
+factory new "Build a system to automate site-level risk scoring"
 cd agent_execution_engine_v2
 npm start
 ```
 
-## 📂 Repo Structure
-- `agents/` – modular agent implementations (TS-based)
-- `blueprints/` – YAML-based RC instructions
-- `rcs/` – Generated run candidate plans
-- `logs/` – Evaluator output, trust scores, execution logs
-- `memory/` – Chunked RC memory
-- `docs/` – Self-generated documentation
-- `orchestrator/` – Loop trace and governance logic
-- `cli/` – Compiled factory CLI
+## 📁 Structure
+Refer to `docs/factory_overview.md` for self-generated system architecture and agent roles.
 
-## 🛡️ Security
-All agents operate under trust evaluation and hallucination detection guardrails. Audit logs and memory persistence ensure reproducibility and safe self-modification.
-
-## 🔁 Vision
-The long-term goal of Forgeborn is to eliminate the gap between software ideation and production by enabling recursive AI-first development at scale.
+For questions or system onboarding, contact the factory admin or Hillstrong engineering.
