@@ -1,0 +1,12 @@
+{
+  "name": "evaluator-agent-v1",
+  "version": "1.0.0",
+  "type": "module",
+"scripts": {
+  "start": "node --loader ts-node/esm run_evaluator_agent_v1.ts"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
+  }
+}

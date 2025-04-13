@@ -1,0 +1,13 @@
+{
+  "name": "docs-agent-v1",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "run_docs_agent_v1.ts",
+  "scripts": {
+    "start": "node --loader ts-node/esm run_docs_agent_v1.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

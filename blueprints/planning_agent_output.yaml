@@ -1,0 +1,17 @@
+goal: Build a devops agent
+tasks:
+  - id: t1
+    title: Interpret the goal and plan architecture
+    agent: planning_agent_v1
+  - id: t2
+    title: Evaluate the RC for trustworthiness
+    agent: evaluator_agent_v1
+  - id: t3
+    title: Chunk RC and store in memory
+    agent: memory_steward_v1
+  - id: t4
+    title: Generate documentation for the RC
+    agent: docs_agent_v1
+  - id: t5
+    title: Analyze loop and plan next move
+    agent: meta_orchestrator_v1

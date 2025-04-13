@@ -1,0 +1,14 @@
+{
+  "name": "forgeborn-cli",
+  "version": "1.0.0",
+  "description": "Command-line interface for Forgeborn software factory",
+  "type": "module",
+  "bin": {
+    "factory": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Roger Hill",
+  "license": "MIT"
+}

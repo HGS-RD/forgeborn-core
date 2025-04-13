@@ -1,0 +1,11 @@
+skills:
+  - name: planning_agent_v1
+    purpose: Breaks down goals and generates task blueprints
+  - name: evaluator_agent_v1
+    purpose: Reviews RC plan quality and trustworthiness
+  - name: memory_steward_v1
+    purpose: Chunks data and stores it into retrievable memory
+  - name: docs_agent_v1
+    purpose: Converts RC and memory into markdown documentation
+  - name: meta_orchestrator_v1
+    purpose: Reviews outputs and decides what to do next
