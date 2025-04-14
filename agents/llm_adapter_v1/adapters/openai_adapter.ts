@@ -1,0 +1,1 @@
+export function callOpenAI(task: string) { return `OpenAI response for: ${task}`; }

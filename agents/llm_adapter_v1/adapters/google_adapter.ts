@@ -1,0 +1,1 @@
+export function callGemini(task: string) { return `Gemini response for: ${task}`; }

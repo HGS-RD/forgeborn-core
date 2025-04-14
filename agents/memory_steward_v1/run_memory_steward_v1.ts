@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { MemoryStewardAgent } from './memory_steward_v1.js';
+import { MemoryStewardAgent } from './memory_steward_v1.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

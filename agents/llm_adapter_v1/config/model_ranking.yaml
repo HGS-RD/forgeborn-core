@@ -1,0 +1,12 @@
+code generation:
+  - name: gpt-4
+    provider: openai
+  - name: claude-3-opus
+    provider: anthropic
+  - name: gemini-1.5-pro
+    provider: google
+summarization:
+  - name: claude-3-sonnet
+    provider: anthropic
+  - name: gpt-4-turbo
+    provider: openai

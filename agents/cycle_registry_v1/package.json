@@ -1,0 +1,15 @@
+{
+  "name": "cycle-registry-v1",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "run_cycle_registry_v1.ts",
+  "scripts": {
+    "start": "node --loader ts-node/esm run_cycle_registry_v1.ts"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9"
+  }
+}

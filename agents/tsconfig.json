@@ -3,12 +3,11 @@
     "module": "ESNext",
     "target": "ES2020",
     "moduleResolution": "node",
+    "noEmit": true,
     "esModuleInterop": true,
-    "strict": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
-  },
-  "ts-node": {
-    "esm": true
+    "strict": true
   }
 }

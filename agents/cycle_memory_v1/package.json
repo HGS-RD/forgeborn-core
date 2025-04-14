@@ -1,0 +1,12 @@
+{
+    "name": "cycle-memory-v1",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+      "start": "node --loader ts-node/esm run_cycle_memory_v1.ts"
+    },
+    "dependencies": {
+      "ts-node": "^10.9.1"
+    }
+  }
+  

@@ -1,0 +1,29 @@
+goal: Scaffold the full code and structure for devops_agent_v1 using the ACA/ADM specification and Forgeborn conventions.
+
+sources:
+  - ../agents/devops_agent_v1/specs/devops_agent_spec.md
+  - ../memory/long_term_memory.json
+  - ../rcs/rc_forgeborn_core_v1_plan.md
+
+tasks:
+  - id: t1
+    title: Parse and interpret the agent spec
+    agent: planning_agent_v1
+    description: Read the devops_agent_spec.md and break it down into required modules, capabilities, and dependencies.
+    output: devops_agent_plan.yaml
+
+  - id: t2
+    title: Validate agent scope and completeness
+    agent: evaluator_agent_v1
+    input: devops_agent_plan.yaml
+    description: Review plan to ensure modularity, alignment with CI/CD goals, and coverage of all core capabilities.
+    output: plan_review.md
+
+  - id: t3
+    title: Scaffold the DevOps agent code and folder structure
+    agent: scaffolding_agent_v1
+    input:
+      - devops_agent_plan.yaml
+      - plan_review.md
+    description: Create the required folders and generate TypeScript stubs for each key module as described in the spec.
+    output: devops_agent_scaffold_log.txt

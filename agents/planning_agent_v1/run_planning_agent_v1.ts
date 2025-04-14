@@ -1,7 +1,8 @@
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
+import fs from 'fs';
+import yaml from 'js-yaml'; // ⚠️ install if not already: npm install js-yaml
 import { PlanningAgent } from './planning_agent_v1.ts';
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,9 +18,15 @@ async function main() {
   console.log("📦 Instantiating PlanningAgent...");
 
   const agent = new PlanningAgent(goal);
-  const output = await agent.generateBlueprint();
+  const blueprint = await agent.generateBlueprint();
 
-  console.log("✅ Blueprint generated at:", output);
+  // ✅ Persist the blueprint as a YAML plan
+  const outputPath = resolve(__dirname, '../../blueprints/builder_agent_plan.yaml');
+  fs.writeFileSync(outputPath, yaml.dump(blueprint), 'utf-8');
+  console.log("✅ builder_agent_plan.yaml written to:", outputPath);
+
+  // Optional: Still log the path returned from the agent (Markdown maybe)
+  console.log("📝 Original agent output:", blueprint);
 }
 
 main().catch((err) => {

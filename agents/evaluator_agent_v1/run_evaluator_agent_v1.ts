@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { EvaluatorAgent } from './evaluator_agent_v1.js'; // 👈 must end in `.js` for ESM
+import { EvaluatorAgent } from './evaluator_agent_v1.ts'; // 👈 must end in `.js` for ESM
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

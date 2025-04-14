@@ -1,0 +1,16 @@
+modules:
+  - path: run_builder_agent_v1.ts
+    stub: runBuilderAgent
+    description: Entry point for running the builder agent.
+
+  - path: builder_agent_core.ts
+    stub: generateAgentCode
+    description: Core logic to analyze spec and generate agent files.
+
+  - path: utils/code_writer.ts
+    stub: writeGeneratedCode
+    description: Writes code files to target directory.
+
+  - path: utils/spec_parser.ts
+    stub: parseAgentSpec
+    description: Parses ACA/ADM spec format into agent modules.

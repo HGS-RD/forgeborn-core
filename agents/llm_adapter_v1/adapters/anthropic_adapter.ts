@@ -1,0 +1,1 @@
+export function callAnthropic(task: string) { return `Anthropic response for: ${task}`; }

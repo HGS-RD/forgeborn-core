@@ -1,17 +1,29 @@
-goal: agent --name meta_orchestrator_v1 --description Analyzes blueprint, memory, and docs to plan the next agent task or improvement.
+goal: Scaffold the agent builder_agent_v1 using the builder_agent_spec.md and standard Forgeborn agent architecture.
+
+sources:
+  - ../agents/builder_agent_v1/specs/builder_agent_spec.md
+  - ../memory/long_term_memory.json
+  - ../rcs/rc_forgeborn_core_v1_plan.md
+
 tasks:
   - id: t1
-    title: Interpret the goal and plan architecture
+    title: Parse and plan the builder agent structure
     agent: planning_agent_v1
+    description: Read the builder_agent_spec.md and output a module/logic plan
+    output: builder_agent_plan.yaml
+
   - id: t2
-    title: Evaluate the RC for trustworthiness
+    title: Evaluate the builder agent plan
     agent: evaluator_agent_v1
+    input: builder_agent_plan.yaml
+    description: Validate modularity and alignment to spec
+    output: builder_agent_plan_review.md
+
   - id: t3
-    title: Chunk RC and store in memory
-    agent: memory_steward_v1
-  - id: t4
-    title: Generate documentation for the RC
-    agent: docs_agent_v1
-  - id: t5
-    title: Analyze loop and plan next move
-    agent: meta_orchestrator_v1
+    title: Scaffold the builder agent files and folders
+    agent: scaffolding_agent_v1
+    input:
+      - builder_agent_plan.yaml
+      - builder_agent_plan_review.md
+    description: Generate the builder_agent_v1 folder structure and starter code
+    output: builder_scaffold_log.txt
