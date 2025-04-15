@@ -1,6 +1,9 @@
-// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
-// Use of this source code is governed by the custom license found in the LICENSE file.
+agents:
+  - name: skill_loader_agent_v1
+    goal: Scan the ./skills directory and register all .mjs modules available at runtime.
 
-# Optimized Blueprint
-Goal: Optimize the agent blueprint for performance and clarity.
-Sources: ../../rcs/rc_forgeborn_core_v1_plan.md, ../../memory/long_term_memory.json
+  - name: blueprint_optimizer_v1
+    goal: Analyze agent folder health and orchestrator alignment to ensure structural integrity.
+
+  - name: meta_orchestrator_v2
+    goal: Execute agents based on blueprint order, skill availability, and branching logic for dynamic workflows.
