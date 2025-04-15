@@ -7,7 +7,10 @@
     "dev:review": "node agents/review_agent_v1/run_review_agent.mjs",
     "check:rules": "node scripts/rule_check.mjs",
     "fix:rules": "node scripts/rule_check.mjs --fix",
-    "dev:meta": "node agents/meta_orchestrator_v1/run_meta_orchestrator_v1.mjs"
+    "dev:meta": "node agents/meta_orchestrator_v1/run_meta_orchestrator_v1.mjs",
+    "optimize": "node agents/blueprint_optimizer_v1/run_blueprint_optimizer_v1.mjs"
+
+
 
   },
   "devDependencies": {
