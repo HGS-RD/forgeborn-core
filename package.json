@@ -6,7 +6,9 @@
     "dev:scheduler": "node agents/cycle_scheduler_v1/run_scheduler.mjs",
     "dev:review": "node agents/review_agent_v1/run_review_agent.mjs",
     "check:rules": "node scripts/rule_check.mjs",
-    "fix:rules": "node scripts/rule_check.mjs --fix"
+    "fix:rules": "node scripts/rule_check.mjs --fix",
+    "dev:meta": "node agents/meta_orchestrator_v1/run_meta_orchestrator_v1.mjs"
+
   },
   "devDependencies": {
     "@types/node": "^20.11.4",
