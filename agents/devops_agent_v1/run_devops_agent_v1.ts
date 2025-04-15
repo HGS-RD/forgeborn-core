@@ -1,13 +1,21 @@
-import { runProvision } from './provision/provision_runner.ts';
-import { runTests } from './test/test_runner.js';
-import { generateCIReport } from './ci/report_generator.js';
+// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
+// Use of this source code is governed by the custom license found in the LICENSE file.
+
+// run_devops_agent_v1.ts
+import { DevOpsAgent } from "./devops_agent_core.ts";
+
+console.log("🚀 devops_agent_v1 starting...");
+
+const goal = "Transform RC plan into devops execution plan";
+const inputPath = "../../blueprints/planner_generated_plan.yaml";
 
 async function main() {
-  console.log('🧪 Starting DevOps Agent pipeline...');
-  await runProvision();
-  await runTests();
-  await generateCIReport();
-  console.log('✅ DevOps Agent pipeline complete.');
+  console.log("📦 Declared input:", inputPath);
+  const agent = new DevOpsAgent(goal, inputPath);
+  const result = agent.run();
+  console.log("✅ RC Plan generated:", result);
 }
 
-main().catch(console.error);
+main().catch((err) => {
+  console.error("❌ devops_agent_v1 failed:", err);
+});

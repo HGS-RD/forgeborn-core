@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
+// Use of this source code is governed by the custom license found in the LICENSE file.
+
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import yaml from 'js-yaml';

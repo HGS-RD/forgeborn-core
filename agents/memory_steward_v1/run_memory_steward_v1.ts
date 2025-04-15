@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
+// Use of this source code is governed by the custom license found in the LICENSE file.
+
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { MemoryStewardAgent } from './memory_steward_v1.ts';

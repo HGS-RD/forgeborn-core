@@ -1,0 +1,16 @@
+{
+  "name": "planner-agent-v2",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node --loader ts-node/esm run_planner_agent_v2.ts"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.3"
+  }
+}

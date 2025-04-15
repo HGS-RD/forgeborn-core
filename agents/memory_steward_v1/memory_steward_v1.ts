@@ -1,46 +1,60 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
-import { join } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
+// Use of this source code is governed by the custom license found in the LICENSE file.
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// memory_steward_core.ts
+import { createClient } from "@supabase/supabase-js";
+import "dotenv/config";
+// run_memory_steward_v1.ts
+import { ingestLLMEvaluationsToMemory } from './memory_steward_v1.ts';
 
-console.log("🧠 memory_steward_v1.ts loaded");
+ingestLLMEvaluationsToMemory().catch((err) => {
+  console.error("❌ Memory Steward Agent failed:", err);
+});
 
-export class MemoryStewardAgent {
-  goal: any;
+export async function ingestLLMEvaluationsToMemory() {
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_KEY;
 
-  constructor(goal: any) {
-    console.log("🧠 MemoryStewardAgent constructor called with:", goal);
-    this.goal = goal;
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Missing SUPABASE_URL or SUPABASE_KEY in env.");
   }
 
-  chunkMemory(): string {
-    const rcPath = join(__dirname, '../../rcs/rc_forgeborn_core_v1_plan.md');
-    const evalPath = join(__dirname, '../../memory/evaluator_score.json');
-    const memoryDir = join(__dirname, '../../memory/chunks');
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
-    if (!existsSync(memoryDir)) {
-      mkdirSync(memoryDir, { recursive: true });
-    }
+  console.log("🔁 Fetching LLM evaluation outputs from Supabase...");
 
-    const rcContent = readFileSync(rcPath, 'utf-8');
-    const score = JSON.parse(readFileSync(evalPath, 'utf-8'));
+  const { data, error } = await supabase
+    .from("llm_eval_logs")
+    .select("*")
+    .eq("status", "success")
+    .not("output", "is", null)
+    .order("timestamp", { ascending: false })
+    .limit(20); // ⏱️ Optional: Tune this for performance
 
-    const chunks = rcContent.split('\n').filter(line => line.trim() !== '');
-
-    chunks.forEach((chunk, idx) => {
-      const filePath = join(memoryDir, `chunk_${idx + 1}.json`);
-      writeFileSync(filePath, JSON.stringify({
-        id: idx + 1,
-        text: chunk,
-        source: 'rc_forgeborn_core_v1_plan.md',
-        trust: score.score
-      }, null, 2));
-    });
-
-    console.log(`✅ Memory chunked into ${chunks.length} files.`);
-    return memoryDir;
+  if (error) {
+    throw new Error(`❌ Supabase fetch failed: ${error.message}`);
   }
+
+  console.log(`📥 Retrieved ${data.length} logs. Starting normalization...`);
+
+  const memoryChunks = data.map((entry: any, index: number) => {
+    return {
+      id: `llm_chunk_${index + 1}`,
+      task: entry.task,
+      model: entry.winner_model,
+      provider: entry.provider,
+      timestamp: entry.timestamp,
+      source: "llm_eval_logs",
+      text: entry.output,
+      trust: "trustworthy", // ✳️ Can evolve later
+    };
+  });
+
+  // 🔐 Optional: Save to filesystem or vector memory store
+  const fs = await import("fs");
+  const path = await import("path");
+
+  const outputPath = path.resolve(__dirname, "../../memory/chunks/llm_eval_ingested.json");
+  fs.writeFileSync(outputPath, JSON.stringify(memoryChunks, null, 2));
+  console.log(`🧠 Ingested memory saved to: ${outputPath}`);
 }

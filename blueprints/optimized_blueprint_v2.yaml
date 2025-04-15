@@ -1,35 +1,11 @@
-goal: Refactor and optimize the Forgeborn agent ecosystem for performance, modularity, and clarity.
-
+goal: >-
+  Scaffold the agent builder_agent_v1 using the builder_agent_spec.md and
+  standard Forgeborn agent architecture.
 sources:
-  - ../../rcs/rc_forgeborn_core_v1_plan.md
-  - ../../memory/long_term_memory.json
-
+  - ../agents/builder_agent_v1/specs/builder_agent_spec.md
+  - ../memory/long_term_memory.json
+  - ../rcs/rc_forgeborn_core_v1_plan.md
 tasks:
-  - id: planning_agent_v1
-    description: Load this blueprint and generate a full pipeline of agent tasks aligned to the optimization goal.
-    output: planning_agent_output.yaml
-
-  - id: evaluator_agent_v1
-    description: Assess the plan produced by planning_agent_v1 for feasibility, redundancy, and alignment with current memory context.
-    input: planning_agent_output.yaml
-    output: evaluation_report.md
-
-  - id: memory_steward_v1
-    description: Extract, chunk, and label relevant insights from the current memory to support downstream agents.
-    input: ../../memory/long_term_memory.json
-    output: extracted_insights.json
-
-  - id: docs_agent_v1
-    description: Generate updated documentation from the optimized plan and context memory.
-    input:
-      - planning_agent_output.yaml
-      - evaluation_report.md
-      - extracted_insights.json
-    output: optimized_docs.md
-
-  - id: meta_orchestrator_v1
-    description: Coordinate final execution plan and validate coherence across tasks. Prepare logging and runtime directives.
-    input:
-      - optimized_docs.md
-      - evaluation_report.md
-    output: execution_manifest.json
+  - '[object Object]  # ⚠️ not executed'
+  - '[object Object]  # ⚠️ not executed'
+  - '[object Object]  # ⚠️ not executed'

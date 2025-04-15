@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
+// Use of this source code is governed by the custom license found in the LICENSE file.
+
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { EvaluatorAgent } from './evaluator_agent_v1.ts'; // 👈 must end in `.js` for ESM

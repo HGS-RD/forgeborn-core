@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
+// Use of this source code is governed by the custom license found in the LICENSE file.
+
 # Forgeborn Core (Internal - Hillstrong)
 
 **Forgeborn** is Hillstrong’s internal AI-native software factory. It enables recursive agent-based software development that plans, executes, evaluates, and evolves intelligent code systems automatically.

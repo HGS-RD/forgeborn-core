@@ -1,46 +1,19 @@
-goal: Build a modular, task-oriented DevOps agent capable of provisioning environments, running tests, and reporting CI/CD status as part of the Forgeborn software factory pipeline.
-
-sources:
-  - ../../rcs/rc_forgeborn_core_v1_plan.md
-  - ../../memory/long_term_memory.json
-  - ../../logs/execution_log_v2.txt
-
+goal: Transform RC plan into devops execution plan
 tasks:
-  - id: t1
-    title: Design DevOps agent architecture
-    agent: planning_agent_v1
-    description: Define the high-level structure, responsibilities, and integration points of a DevOps agent.
-    output: devops_agent_architecture.yaml
-
-  - id: t2
-    title: Evaluate architecture for completeness
-    agent: evaluator_agent_v1
-    input: devops_agent_architecture.yaml
-    description: Assess the feasibility, clarity, and modularity of the proposed agent structure.
-    output: architecture_evaluation.md
-
-  - id: t3
-    title: Extract memory chunks relevant to DevOps practices
-    agent: memory_steward_v1
-    input: ../../memory/long_term_memory.json
-    description: Provide supporting insights from prior cycles to inform the agent's CI/CD logic, environment handling, and logging.
-    output: devops_insights.json
-
-  - id: t4
-    title: Generate DevOps agent specification
-    agent: docs_agent_v1
-    input:
-      - devops_agent_architecture.yaml
-      - architecture_evaluation.md
-      - devops_insights.json
-    description: Write a complete specification document (ACA/ADM style) for the DevOps agent based on combined planning and memory inputs.
-    output: devops_agent_spec.md
-
-  - id: t5
-    title: Plan next step: scaffold agent or delegate to builder agent
-    agent: meta_orchestrator_v1
-    input:
-      - devops_agent_spec.md
-      - architecture_evaluation.md
-    description: Decide whether to spawn a `scaffolding_agent_v1` to generate initial code or hand off to an existing builder agent.
-    output: devops_agent_execution_plan.json
+  - id: task_1
+    description: '[object Object]'
+    status: pending
+    assignedTo: auto
+    createdAt: '2025-04-14T21:10:37.904Z'
+  - id: task_2
+    description: '[object Object]'
+    status: pending
+    assignedTo: auto
+    createdAt: '2025-04-14T21:10:37.904Z'
+  - id: task_3
+    description: '[object Object]'
+    status: pending
+    assignedTo: auto
+    createdAt: '2025-04-14T21:10:37.904Z'
+source: ../../blueprints/planner_generated_plan.yaml
+generatedAt: '2025-04-14T21:10:37.904Z'

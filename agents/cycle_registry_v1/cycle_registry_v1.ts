@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
+// Use of this source code is governed by the custom license found in the LICENSE file.
+
 // /Users/rogerhill/Documents/GitHub/forgeborn-core/agents/cycle_registry_v1/cycle_registry_v1.ts
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';

@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
+// Use of this source code is governed by the custom license found in the LICENSE file.
+
 # Blueprint: Scaffold builder_agent_v1 from spec
 
 ## Goal:
