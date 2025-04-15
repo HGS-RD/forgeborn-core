@@ -1,75 +1,138 @@
-# 📏 Forgeborn Core Development Rules
+# Forgeborn Agent System – Consistency and Naming Rules
 
-Welcome to the `forgeborn-core` repository! This document defines the structural, naming, and execution rules that must be followed for all new development activities and agent contributions.
+This document defines **code conventions** and **naming rules** for all agents, packages, and project-level practices to ensure architectural integrity and maintainability.
 
 ---
 
-## 🗂️ File & Directory Naming Conventions
+## 1. 📁 Directory Structure
 
-### Agent Structure
-Each agent must reside in its own directory within `agents/` and follow this structure:
+Each agent MUST reside in its own folder under `/agents/`, named using the following convention:
 
 ```
-agents/
-  agent_name/
-    ├── agent_core.ts            # Core logic
-    ├── run_agent.ts             # Entrypoint script
-    ├── package.json
-    ├── tsconfig.json
-    ├── README.md                # Agent-level documentation
-    ├── config/                  # Any configuration files
-    ├── utils/                   # Shared utilities
-    └── tests/                   # (optional) unit/integration tests
+<agent_type>_agent_v<version>
+e.g. planner_agent_v2, devops_agent_v1
 ```
 
-### Filenames
-- Use `snake_case` for filenames.
-- Use `agent_core.ts` and `run_agent.ts` naming consistently.
-- Do not use suffixes like `_v1`, `_v2` in filenames. Use Git for versioning.
+Each folder MUST contain:
+
+- `package.json`
+- `tsconfig.json`
+- `run_<agent_type>_agent_v<version>.ts`
+- `<agent_type>_agent_core.ts`
+- `README.md` (optional but encouraged)
 
 ---
 
-## 🧠 Agent Definition Standards
+## 2. 📄 File Naming Rules
 
-- All agents **must export** a primary class (e.g., `PlannerAgent`) from `agent_core.ts`.
-- Entrypoint `run_agent.ts` must:
-  - Instantiate the agent with a `goal` and `inputDocs`.
-  - Log all major steps using emoji-prefixed logging (e.g., `🚀`, `✅`, `❌`).
-  - Catch and log any runtime errors.
+| Purpose                        | File Name                                 | Notes                                  |
+|-------------------------------|--------------------------------------------|----------------------------------------|
+| Core logic                    | `<agent_type>_agent_core.ts`              | The primary class logic of the agent   |
+| Entrypoint for execution      | `run_<agent_type>_agent_v<version>.ts`    | Always separate from core logic        |
+| Test scripts (if used)        | `test_<agent_type>.ts`                    | Unit or integration test entrypoint    |
+| Supporting utils              | `utils/`, `strategies/`, or `adapters/`   | Group supporting files in subfolders   |
 
----
-
-## 📐 Code Quality & Practices
-
-- TypeScript only. No JavaScript files should be committed.
-- All imports must include file extensions (e.g., `import { X } from './utils.ts'`).
-- Use `__dirname` via ESM-safe workaround (`fileURLToPath`, `dirname`).
-- Avoid hardcoding values. Use config files or environment variables.
+Do NOT place runnable code directly in `core.ts`. It should be class-based and invoked via the `run_*.ts` entrypoint.
 
 ---
 
-## 🧪 Testing & Linting
+## 3. 🧠 Class Naming Convention
 
-- Tests should live in a `tests/` subfolder.
-- All new agents must be tested manually before commit.
-- ESLint and Prettier must be configured and run before PRs.
+The main agent class should always follow this structure:
+
+```ts
+export class <AgentType>Agent {
+  ...
+}
+```
+
+Example:
+
+```ts
+export class PlannerAgent { ... }
+export class DevOpsAgent { ... }
+```
+
+The constructor must always accept:
+
+```ts
+constructor(goal: string, inputDocs: string[] | string)
+```
 
 ---
 
-## 🔐 Secrets & Environment
+## 4. 🏃 Entrypoint Structure
 
-- No secrets or API keys in committed code.
-- Use `.env` or `supabase_config.sh` for local dev and CI/CD separation.
+Entrypoint files (`run_*.ts`) must:
+
+- Log initialization clearly
+- Create the agent using `goal` and `inputDocs`
+- Call the appropriate method (`run()`, `generatePlan()`, `optimizeBlueprint()`, etc.)
+
+Example:
+
+```ts
+import { PlannerAgent } from "./planner_agent_core.ts";
+
+const goal = "Generate RC plan";
+const inputDocs = ["../../blueprints/optimized_blueprint_v2.yaml"];
+
+async function main() {
+  const agent = new PlannerAgent(goal, inputDocs[0]);
+  const result = await agent.generatePlan();
+  console.log("✅ Output written to:", result);
+}
+
+main().catch(console.error);
+```
 
 ---
 
-## 📝 Commit & Branching Strategy
+## 5. 🧪 TypeScript and Module Settings
 
-- Use Conventional Commits (e.g., `feat:`, `fix:`, `chore:`).
-- PRs should follow the “Fastlane drop-in” principle: isolated, minimal, working units.
-- Main branch must always be working. Use feature branches for active work.
+- Use `type: "module"` in `package.json`
+- Use `.ts` extensions in all import paths
+- Use `ts-node` with `--loader ts-node/esm`
+- Always define types (`string[]`, `any[]`, `Promise<string>`, etc.)
+- Disable `__dirname` errors with:
+
+```ts
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+```
 
 ---
 
-By following this `rules.md`, we ensure consistency, clarity, and futureproof growth of the Forgeborn Factory.
+## 6. 🔒 Security
 
+- Never hardcode secrets in `.ts` files
+- Use `.env` or `supabase_config.sh` + `dotenv/config`
+- Sanitize any Supabase or LLM logs before logging
+
+---
+
+## 7. 📦 Commit Practices
+
+- Use semantic commit prefixes:
+  - `feat:` for features
+  - `fix:` for bug fixes
+  - `chore:` for housekeeping
+  - `refactor:` for rewrites
+- Always stage `package-lock.json` if dependencies change
+- Prefer atomic commits per agent update
+
+---
+
+## 8. 🔁 Naming Consistency
+
+Use this pattern throughout:
+- `planner_agent_v1`
+- `PlannerAgent` (class)
+- `planner_agent_core.ts` (core logic)
+- `run_planner_agent_v1.ts` (entrypoint)
+
+---
+
+By following these rules, the Forgeborn project will remain consistent, maintainable, and easily scalable as agent complexity grows.
