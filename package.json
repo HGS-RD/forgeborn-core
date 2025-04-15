@@ -10,7 +10,11 @@
     "dev:meta": "node agents/meta_orchestrator_v1/run_meta_orchestrator_v1.mjs",
     "optimize": "node agents/blueprint_optimizer_v1/run_blueprint_optimizer_v1.mjs",
     "load:skills": "node agents/skill_loader_agent_v1/run_skill_loader_agent_v1.mjs",
-    "orchestrate:v2": "node agents/meta_orchestrator_v2/run_meta_orchestrator_v2.mjs"
+    "orchestrate:v2": "node agents/meta_orchestrator_v2/run_meta_orchestrator_v2.mjs",
+    "validate:agents": "node agents/validator_agent_v1/run_validator_agent_v1.mjs",
+    "plan": "node agents/planning_agent_v1/run_planning_agent_v1.mjs"
+
+
 
 
 
