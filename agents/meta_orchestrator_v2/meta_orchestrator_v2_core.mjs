@@ -24,6 +24,8 @@ export const meta_orchestrator_v2_core = async () => {
     return;
   }
 
+  const executed = [];
+
   for (const task of planData.plan) {
     if (task.status !== 'ready') continue;
     const agentName = task.agent;
@@ -32,8 +34,26 @@ export const meta_orchestrator_v2_core = async () => {
     try {
       await import(runner);
       console.log(`✅ Successfully ran ${agentName}`);
+      executed.push(agentName);
     } catch (err) {
       console.error(`❌ Failed to run ${agentName}:`, err.message);
     }
+  }
+
+  // 🧠 Log to trace memory
+  const traceLoggerPath = path.resolve('./skills/trace_logger_skill.mjs');
+  if (fs.existsSync(traceLoggerPath)) {
+    try {
+      const mod = await import(traceLoggerPath);
+      if (typeof mod.runSkill === 'function') {
+        await mod.runSkill({ invokedBy: 'meta_orchestrator_v2', agents: executed });
+      } else {
+        console.warn("⚠️ trace_logger_skill does not export runSkill()");
+      }
+    } catch (err) {
+      console.error("❌ Failed to run trace_logger_skill:", err.message);
+    }
+  } else {
+    console.warn("⚠️ trace_logger_skill.mjs not found");
   }
 };
