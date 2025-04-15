@@ -5,14 +5,17 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 const AGENTS_DIR = path.resolve(__dirname, '../agents');
-const allowedExtensions = ['.mjs', '.md'];
-const requiredExtensions = ['.mjs'];
 const args = process.argv.slice(2);
 const fix = args.includes('--fix');
+
 const errors = [];
 const fixed = [];
+
+const allowedExtensions = ['.mjs', '.md', '.json', '.sh'];
+const allowedFiles = ['package.json', 'package-lock.json', 'tsconfig.json', 'README.md'];
+const allowedDirs = ['specs', 'config', 'utils', 'heuristics', 'strategies', 'test', 'ci', 'provision', 'docs', 'adapters', 'selector', 'writer', 'blueprints'];
+const ignoreFolders = ['node_modules', '.DS_Store'];
 
 const createStub = (filePath, content) => {
   fs.writeFileSync(filePath, content);
@@ -22,17 +25,16 @@ const createStub = (filePath, content) => {
 fs.readdirSync(AGENTS_DIR).forEach(agent => {
   const agentPath = path.join(AGENTS_DIR, agent);
   if (!fs.statSync(agentPath).isDirectory()) return;
+  if (ignoreFolders.includes(agent)) return;
 
   const files = fs.readdirSync(agentPath);
-  const hasCore = files.some(f => f === `${agent}_core.mjs`);
-  const hasRunner = files.some(f => f === `run_${agent}.mjs`);
+  const hasCore = files.includes(`${agent}_core.mjs`);
+  const hasRunner = files.includes(`run_${agent}.mjs`);
 
   if (!hasCore) {
     const stubPath = path.join(agentPath, `${agent}_core.mjs`);
     if (fix) {
-      createStub(stubPath, `export const ${agent}_core = () => {
-  console.log('${agent} core logic not yet implemented.');
-};`);
+      createStub(stubPath, `export const ${agent}_core = () => {\n  console.log('${agent} core logic not yet implemented.');\n};`);
     } else {
       errors.push(`❌ Missing core file: ${agent}/${agent}_core.mjs`);
     }
@@ -41,30 +43,38 @@ fs.readdirSync(AGENTS_DIR).forEach(agent => {
   if (!hasRunner) {
     const stubPath = path.join(agentPath, `run_${agent}.mjs`);
     if (fix) {
-      createStub(stubPath, `import { ${agent}_core } from './${agent}_core.mjs';
-
-console.log('Running ${agent}...');
-${agent}_core();`);
+      createStub(stubPath, `import { ${agent}_core } from './${agent}_core.mjs';\n\nconsole.log('Running ${agent}...');\n${agent}_core();`);
     } else {
       errors.push(`❌ Missing runner file: ${agent}/run_${agent}.mjs`);
     }
   }
 
-  files.forEach(file => {
+  for (const file of files) {
     const fullPath = path.join(agentPath, file);
     const ext = path.extname(file);
 
-    if (!allowedExtensions.includes(ext)) {
+    const isAllowedDir = allowedDirs.includes(file);
+    const isAllowedFile = allowedFiles.includes(file);
+    const isValidExtension = allowedExtensions.includes(ext);
+
+    if (fs.statSync(fullPath).isDirectory()) {
+      if (!isAllowedDir && !ignoreFolders.includes(file)) {
+        errors.push(`❌ Invalid subdirectory in ${agent}/${file}`);
+      }
+      continue;
+    }
+
+    if (!isAllowedFile && !isValidExtension) {
       if (fix && ext === '.ts') {
         const newName = file.replace(/\.ts$/, '.mjs');
         const newPath = path.join(agentPath, newName);
         fs.renameSync(fullPath, newPath);
         fixed.push(`🛠️ Renamed: ${file} -> ${newName}`);
       } else {
-        errors.push(`❌ Invalid extension in ${agent}/${file} — only .mjs is allowed`);
+        errors.push(`❌ Invalid file in ${agent}/${file}`);
       }
     }
-  });
+  }
 });
 
 if (fix && fixed.length) {
