@@ -4,38 +4,36 @@ import path from 'path';
 import yaml from 'js-yaml';
 
 export const meta_orchestrator_v2_core = async () => {
-  console.log("🧠 meta_orchestrator_v2 is initializing...");
-
-  const blueprintPath = path.resolve('./agents/blueprint_optimizer_v1/optimized_blueprint.md');
-  if (!fs.existsSync(blueprintPath)) {
-    console.log("❌ Blueprint file not found:", blueprintPath);
+  const planPath = './agents/planning_agent_v1/planning_results.yaml';
+  if (!fs.existsSync(planPath)) {
+    console.error("❌ Cannot find planning_results.yaml.");
     return;
   }
 
-  const blueprintText = fs.readFileSync(blueprintPath, 'utf-8');
-  let blueprint;
+  const content = fs.readFileSync(planPath, 'utf-8');
+  let planData;
   try {
-    blueprint = yaml.load(blueprintText);
+    planData = yaml.load(content);
   } catch (err) {
-    console.error("❌ Failed to parse YAML blueprint:", err.message);
+    console.error("❌ Failed to parse planning YAML:", err.message);
     return;
   }
 
-  if (!Array.isArray(blueprint.agents)) {
-    console.log("❌ No valid 'agents' array found in blueprint.");
+  if (!Array.isArray(planData.plan)) {
+    console.log("❌ Plan structure invalid or missing.");
     return;
   }
 
-  for (const agent of blueprint.agents) {
-    const runnerPath = `../${agent.name}/run_${agent.name}.mjs`;
-    console.log(`➡️  Running agent: ${agent.name}`);
+  for (const task of planData.plan) {
+    if (task.status !== 'ready') continue;
+    const agentName = task.agent;
+    const runner = `../${agentName}/run_${agentName}.mjs`;
+    console.log(`🧭 Running planned agent: ${agentName}`);
     try {
-      const module = await import(runnerPath);
-      console.log(`✅ Successfully ran ${agent.name}`);
+      await import(runner);
+      console.log(`✅ Successfully ran ${agentName}`);
     } catch (err) {
-      console.error(`❌ Failed to run ${agent.name}:`, err.message);
+      console.error(`❌ Failed to run ${agentName}:`, err.message);
     }
   }
-
-  console.log("✅ meta_orchestrator_v2 complete.");
 };

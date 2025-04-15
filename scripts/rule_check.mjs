@@ -13,7 +13,7 @@ const errors = [];
 const fixed = [];
 
 const allowedExtensions = ['.mjs', '.md', '.json', '.sh', '.yaml', '.yml'];
-const allowedFiles = ['package.json', 'package-lock.json', 'tsconfig.json', 'README.md'];
+const allowedFiles = ['package.json', 'package-lock.json', 'tsconfig.json', 'README.md', 'planning_results.yaml'];
 const allowedDirs = [
   'specs', 'config', 'utils', 'heuristics', 'strategies', 'test', 'docs', 'ci',
   'provision', 'adapters', 'selector', 'writer', 'blueprints', 'skills'
