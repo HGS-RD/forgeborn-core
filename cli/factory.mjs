@@ -18,7 +18,9 @@ const runNodeFile = async (relativePath) => {
 };
 
 // Built-in CLI modes
-if (command === 'run' && arg === 'index') {
+if (command === 'run' && arg === 'usage') {
+  await import('../skills/usage_analyzer_skill.mjs').then(m => m.runSkill({ invokedBy: 'cli' }));
+} else if (command === 'run' && arg === 'index') {
   await import('../skills/index_memory_skill.mjs').then(m => m.runSkill({ invokedBy: 'cli' }));
 } else if (command === 'run' && arg === 'auto') {
   await import('../skills/auto_pipeline_skill.mjs').then(m => m.runSkill({ invokedBy: 'cli' }));
