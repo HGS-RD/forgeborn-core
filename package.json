@@ -1,7 +1,17 @@
 {
+  "name": "forgeborn-core",
+  "type": "module",
+  "scripts": {
+"dev:scheduler": "node agents/cycle_scheduler_v1/run_scheduler.mjs",
+"dev:review": "node agents/review_agent_v1/run_review_agent.mjs"
+
+  },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.30.1",
-    "@typescript-eslint/parser": "^8.30.1",
-    "eslint": "^9.24.0"
+    "@types/node": "^20.11.4",
+    "@typescript-eslint/eslint-plugin": "^6.30.1",
+    "@typescript-eslint/parser": "^6.30.1",
+    "eslint": "^8.56.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }
