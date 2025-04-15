@@ -10,8 +10,11 @@ export async function runSkill(config) {
   const log = {
     executed_at: timestamp,
     executed_by: config?.invokedBy || 'unknown',
-    agents_run: config?.agents || []
+    executed: config?.agents || [],
+    agents_run: config?.agents || [] // legacy support
   };
+  
+  
 
   fs.writeFileSync(traceFile, yaml.dump(log), 'utf-8');
   console.log(`🧠 Execution trace written to: ${traceFile}`);

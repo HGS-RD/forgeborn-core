@@ -1,30 +1,59 @@
 // skills/auto_pipeline_skill.mjs
+import { planning_agent_v1_core } from '../agents/planning_agent_v1/planning_agent_v1_core.mjs';
+import { meta_orchestrator_v2_core } from '../agents/meta_orchestrator_v2/meta_orchestrator_v2_core.mjs';
+import { skill_loader_agent_v1_core } from '../agents/skill_loader_agent_v1/skill_loader_agent_v1_core.mjs';
+import { blueprint_optimizer_v1_core } from '../agents/blueprint_optimizer_v1/blueprint_optimizer_v1_core.mjs';
+import { validator_agent_v1_core } from '../agents/validator_agent_v1/validator_agent_v1_core.mjs';
+
+import { runSkill as traceLogger } from './trace_logger_skill.mjs';
+import { runSkill as memoryWriter } from './memory_writer_skill.mjs';
+import { runSkill as memoryIndexer } from './index_memory_skill.mjs';
+import { runSkill as usageAnalyzer } from './usage_analyzer_skill.mjs';
+
 export async function runSkill(config) {
-  if (global.__auto_running) {
-    console.log("⚠️ auto_pipeline_skill is already running. Skipping to prevent recursion.");
-    return;
-  }
-  global.__auto_running = true;
+  console.log('\n🚀 Starting Auto Pipeline Skill\n');
 
-  const step = async (label, path) => {
-    console.log(`\n🔹 ${label}...`);
-    try {
-      await import(path);
-      console.log(`✅ ${label} completed.`);
-    } catch (err) {
-      console.error(`❌ Failed at ${label}:`, err.message);
-    }
-  };
+  // 1. Planning Phase
+  console.log('🔹 Planning...');
+  await planning_agent_v1_core();
+  console.log('✅ Planning completed.\n');
 
-  console.log("\n🚀 Starting Auto Pipeline Skill");
+  // 2. Orchestration Phase
+  console.log('🔹 Skill Loader...');
+  await skill_loader_agent_v1_core();
+  console.log('✅ Skill Loader completed.\n');
 
-  await step("Planning", '../agents/planning_agent_v1/run_planning_agent_v1.mjs');
-  await step("Skill Loader", '../agents/skill_loader_agent_v1/skill_loader_agent_v1_core.mjs');
-  await step("Blueprint Optimizer", '../agents/blueprint_optimizer_v1/run_blueprint_optimizer_v1.mjs');
-  await step("Validation", '../agents/validator_agent_v1/run_validator_agent_v1.mjs');
-  await step("Memory Write", '../skills/memory_writer_skill.mjs');
-  await step("Memory Indexing", '../skills/index_memory_skill.mjs');
-  await step("Usage Report", '../skills/usage_analyzer_skill.mjs');
+  console.log('🔹 Blueprint Optimizer...');
+  await blueprint_optimizer_v1_core();
+  console.log('✅ Blueprint Optimizer completed.\n');
 
-  console.log("\n🧠 Auto pipeline complete. Memory, trace, coverage, and usage insights updated.");
+  console.log('🔹 Validation...');
+  await validator_agent_v1_core();
+  console.log('✅ Validation completed.\n');
+
+  // 3. Memory & Trace
+  console.log('🔹 Memory Write...');
+  await memoryWriter({ invokedBy: 'auto_pipeline_skill' });
+  console.log('✅ Memory Write completed.\n');
+
+  console.log('🔹 Memory Indexing...');
+  await memoryIndexer({ invokedBy: 'auto_pipeline_skill' });
+  console.log('✅ Memory Indexing completed.\n');
+
+  console.log('🔹 Execution Trace...');
+  await traceLogger({
+    invokedBy: 'auto_pipeline_skill',
+    agents: [
+      'skill_loader_agent_v1',
+      'blueprint_optimizer_v1',
+      'validator_agent_v1'
+    ]
+  });
+  console.log('✅ Execution Trace written.\n');
+
+  console.log('🔹 Usage Report...');
+  await usageAnalyzer({ invokedBy: 'auto_pipeline_skill' });
+  console.log('✅ Usage Report completed.\n');
+
+  console.log('\n🧠 Auto pipeline complete. Memory, trace, coverage, and usage insights updated.');
 }

@@ -18,7 +18,10 @@ export const skill_loader_agent_v1_core = async () => {
     if (!file.endsWith('.mjs')) continue;
 
     const skillName = path.basename(file, '.mjs');
+    if (skillName === 'auto_pipeline_skill') continue; // 🚫 prevent recursion
+    
     const skillPath = path.resolve(SKILLS_DIR, file);
+    
 
     try {
       const skillModule = await import(skillPath);
