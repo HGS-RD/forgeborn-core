@@ -2,8 +2,8 @@
 import fs from 'fs';
 import path from 'path';
 
-export const skill_loader_agent_v1_core = () => {
-  console.log("🔌 skill_loader_agent_v1 is scanning for loadable .mjs skill modules...");
+export const skill_loader_agent_v1_core = async () => {
+  console.log("🔌 skill_loader_agent_v1 is scanning for .mjs skill modules...");
 
   const SKILLS_DIR = './skills';
   const skills = [];
@@ -13,17 +13,31 @@ export const skill_loader_agent_v1_core = () => {
     return;
   }
 
-  fs.readdirSync(SKILLS_DIR).forEach(file => {
-    if (file.endsWith('.mjs')) {
-      const skillName = path.basename(file, '.mjs');
-      skills.push(skillName);
-    }
-  });
+  const files = fs.readdirSync(SKILLS_DIR);
+  for (const file of files) {
+    if (!file.endsWith('.mjs')) continue;
 
-  if (skills.length > 0) {
-    console.log("✅ Found skills:");
-    skills.forEach(skill => console.log(`  - ${skill}`));
-  } else {
-    console.log("⚠️ No .mjs skill modules found in ./skills/");
+    const skillName = path.basename(file, '.mjs');
+    const skillPath = path.resolve(SKILLS_DIR, file);
+
+    try {
+      const skillModule = await import(skillPath);
+      const hasRunSkill = typeof skillModule.runSkill === 'function';
+
+      console.log(`🧩 Found skill: ${skillName}${hasRunSkill ? ' ✅ runSkill() detected' : ' ⚠️ no runSkill() exported'}`);
+      skills.push({ name: skillName, hasRunSkill });
+
+      if (hasRunSkill) {
+        console.log(`➡️ Executing ${skillName}...`);
+        await skillModule.runSkill({ invokedBy: 'skill_loader_agent_v1' });
+        console.log(`✅ Skill ${skillName} executed successfully`);
+      }
+    } catch (err) {
+      console.error(`❌ Failed to load skill '${skillName}':`, err.message);
+    }
+  }
+
+  if (skills.length === 0) {
+    console.log("⚠️ No valid skill modules found.");
   }
 };

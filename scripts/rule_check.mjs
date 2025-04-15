@@ -12,10 +12,13 @@ const fix = args.includes('--fix');
 const errors = [];
 const fixed = [];
 
-const allowedExtensions = ['.mjs', '.md', '.json', '.sh'];
+const allowedExtensions = ['.mjs', '.md', '.json', '.sh', '.yaml', '.yml'];
 const allowedFiles = ['package.json', 'package-lock.json', 'tsconfig.json', 'README.md'];
-const allowedDirs = ['specs', 'config', 'utils', 'heuristics', 'strategies', 'test', 'ci', 'provision', 'docs', 'adapters', 'selector', 'writer', 'blueprints'];
-const ignoreFolders = ['node_modules', '.DS_Store'];
+const allowedDirs = [
+  'specs', 'config', 'utils', 'heuristics', 'strategies', 'test', 'docs', 'ci',
+  'provision', 'adapters', 'selector', 'writer', 'blueprints', 'skills'
+];
+const ignoreFolders = ['node_modules', '.DS_Store', '.bin', '.package-lock.json'];
 
 const createStub = (filePath, content) => {
   fs.writeFileSync(filePath, content);
@@ -51,20 +54,17 @@ fs.readdirSync(AGENTS_DIR).forEach(agent => {
 
   for (const file of files) {
     const fullPath = path.join(agentPath, file);
-    const ext = path.extname(file);
-
-    const isAllowedDir = allowedDirs.includes(file);
-    const isAllowedFile = allowedFiles.includes(file);
-    const isValidExtension = allowedExtensions.includes(ext);
 
     if (fs.statSync(fullPath).isDirectory()) {
-      if (!isAllowedDir && !ignoreFolders.includes(file)) {
-        errors.push(`❌ Invalid subdirectory in ${agent}/${file}`);
+      if (!allowedDirs.includes(file) && !ignoreFolders.includes(file)) {
+        errors.push(`❌ Unsupported folder: ${agent}/${file}`);
       }
       continue;
     }
 
-    if (!isAllowedFile && !isValidExtension) {
+    const ext = path.extname(file);
+    const isAllowed = allowedExtensions.includes(ext) || allowedFiles.includes(file);
+    if (!isAllowed && !ignoreFolders.includes(file)) {
       if (fix && ext === '.ts') {
         const newName = file.replace(/\.ts$/, '.mjs');
         const newPath = path.join(agentPath, newName);
