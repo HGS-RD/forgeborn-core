@@ -18,7 +18,11 @@ const runNodeFile = async (relativePath) => {
 };
 
 // Built-in CLI modes
-if (command === 'plan') {
+if (command === 'run' && arg === 'index') {
+  await import('../skills/index_memory_skill.mjs').then(m => m.runSkill({ invokedBy: 'cli' }));
+} else if (command === 'run' && arg === 'auto') {
+  await import('../skills/auto_pipeline_skill.mjs').then(m => m.runSkill({ invokedBy: 'cli' }));
+} else if (command === 'plan') {
   await runNodeFile('agents/planning_agent_v1/run_planning_agent_v1.mjs');
 } else if (command === 'validate') {
   await runNodeFile('agents/validator_agent_v2/run_validator_agent_v2.mjs');

@@ -40,7 +40,7 @@ export const meta_orchestrator_v2_core = async () => {
     }
   }
 
-  // 🧠 Log to trace memory
+  console.log("🧠 Logging execution trace...");
   const traceLoggerPath = path.resolve('./skills/trace_logger_skill.mjs');
   if (fs.existsSync(traceLoggerPath)) {
     try {
