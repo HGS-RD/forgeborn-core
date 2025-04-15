@@ -2,14 +2,16 @@
   "name": "forgeborn-core",
   "type": "module",
   "scripts": {
-"dev:scheduler": "node agents/cycle_scheduler_v1/run_scheduler.mjs",
-"dev:review": "node agents/review_agent_v1/run_review_agent.mjs"
-
+    "test": "echo \"✅ Tests not yet implemented\" && exit 0",
+    "dev:scheduler": "node agents/cycle_scheduler_v1/run_scheduler.mjs",
+    "dev:review": "node agents/review_agent_v1/run_review_agent.mjs",
+    "check:rules": "node scripts/rule_check.mjs",
+    "fix:rules": "node scripts/rule_check.mjs --fix"
   },
   "devDependencies": {
     "@types/node": "^20.11.4",
-    "@typescript-eslint/eslint-plugin": "^6.30.1",
-    "@typescript-eslint/parser": "^6.30.1",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
     "eslint": "^8.56.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
