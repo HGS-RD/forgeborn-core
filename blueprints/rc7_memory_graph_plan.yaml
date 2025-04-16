@@ -1,4 +1,4 @@
-goal: Capture vector embeddings and code graph for RC7 artifacts
+goal: Embed memory and build code graph for RC7
 agents:
   - vector_agent_v1
   - graph_mapper_agent_v1
