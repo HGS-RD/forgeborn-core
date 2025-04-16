@@ -1,0 +1,5 @@
+goal: Deploy cloud infra for RC3
+actions:
+  - provision: digitalocean
+  - configure: supabase
+  - verify: success

@@ -1,0 +1,1 @@
+// Configure Supabase project

@@ -13,8 +13,7 @@
     "orchestrate:v2": "node agents/meta_orchestrator_v2/run_meta_orchestrator_v2.mjs",
     "validate:agents": "node agents/validator_agent_v1/run_validator_agent_v1.mjs",
     "plan": "node agents/planning_agent_v1/run_planning_agent_v1.mjs",
-     "start": "concurrently \"vite\" \"node server/server.js\""
-
+    "start": "concurrently \"vite\" \"node server/server.js\""
   },
   "devDependencies": {
     "@types/node": "^20.11.4",
@@ -23,5 +22,9 @@
     "eslint": "^8.56.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.1.1",
+    "simple-git": "^3.27.0"
   }
 }

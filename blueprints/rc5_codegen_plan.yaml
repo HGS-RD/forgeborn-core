@@ -1,0 +1,7 @@
+goal: Create a new skill to validate Supabase API keys
+agent: builder_agent_v1
+inputs:
+  - spec: "Generate a .mjs function to verify a Supabase key against an expected constant"
+outputs:
+  - file: skills/validate_supabase_key.mjs
+  - status: success

@@ -1,0 +1,7 @@
+goal: Push generated skill to GitHub and open a pull request
+agent: github_agent_v1
+inputs:
+  - file: agents/generated/validate_supabase_key.mjs
+  - commit: "Add generated Supabase key validator"
+outputs:
+  - pr_url: "https://github.com/HGS-RD/forgeborn-core/pull/42"

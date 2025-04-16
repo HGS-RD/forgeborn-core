@@ -1,6 +1,9 @@
-// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
-// Use of this source code is governed by the custom license found in the LICENSE file.
+// builder_agent_v1 core logic
+import { generateCodeFromSpec } from './skills/generate_code_from_spec.mjs';
+import { validateGeneratedCode } from './skills/validate_generated_code.mjs';
 
-// Core logic to analyze the spec and generate agent files
-
-export async function generateAgentCode() {}
+export async function runBuilderAgent(context) {
+  const code = await generateCodeFromSpec(context);
+  const result = await validateGeneratedCode(code);
+  return result;
+}
