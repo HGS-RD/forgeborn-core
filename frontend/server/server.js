@@ -24,8 +24,6 @@ function readYamlFile(relativePath) {
   }
 }
 
-
-
 app.get('/api/memory-summary', (req, res) => {
   res.json(readYamlFile('memory/memory_index.yaml'));
 });
@@ -36,12 +34,9 @@ app.get('/api/agent-usage', (req, res) => {
 
 app.get('/api/reflection-latest', (req, res) => {
   const dirPath = path.resolve(__dirname, '../../logs');
-
-
   const files = fs.readdirSync(dirPath);
   const reflections = files.filter(f => f.startsWith('reflection_summary_') && f.endsWith('.yaml'));
   const latest = reflections.sort().reverse()[0];
-
   if (latest) {
     const raw = fs.readFileSync(path.join(dirPath, latest), 'utf-8');
     res.json(YAML.parse(raw));
@@ -50,7 +45,18 @@ app.get('/api/reflection-latest', (req, res) => {
   }
 });
 
-// 👇 THIS LINE IS CRITICAL TO KEEP THE SERVER RUNNING
+app.get('/api/execution-timeline', (req, res) => {
+  res.json(readYamlFile('logs/execution_trace_rc3.yaml'));
+});
+
+app.get('/api/blueprint', (req, res) => {
+  res.json(readYamlFile('logs/blueprint_summary_rc3.yaml'));
+});
+
+app.get('/api/skill-chain', (req, res) => {
+  res.json(readYamlFile('logs/skill_chain_rc3.yaml'));
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Dashboard API running at http://localhost:${PORT}`);
 });

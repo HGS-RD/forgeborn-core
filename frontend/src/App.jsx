@@ -3,6 +3,9 @@ import React from 'react';
 import MemoryView from './components/MemoryView';
 import AgentUsageView from './components/AgentUsageView';
 import ReflectionView from './components/ReflectionView';
+import ExecutionTimelineView from './components/ExecutionTimelineView';
+import BlueprintView from './components/BlueprintView';
+import SkillChainView from './components/SkillChainView';
 
 export default function App() {
   return (
@@ -11,6 +14,9 @@ export default function App() {
       <MemoryView />
       <AgentUsageView />
       <ReflectionView />
+      <ExecutionTimelineView />
+      <BlueprintView />
+      <SkillChainView />
     </div>
   );
 }

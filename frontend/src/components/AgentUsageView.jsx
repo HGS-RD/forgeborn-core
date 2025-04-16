@@ -6,7 +6,7 @@ export default function AgentUsageView() {
   useEffect(() => {
     fetch('http://localhost:3001/api/agent-usage')
       .then(res => res.json())
-      .then(data => setUsage(data))
+      .then(data => setUsage(data.agent_usage || null))
       .catch(err => console.error('Error fetching usage:', err));
   }, []);
 
