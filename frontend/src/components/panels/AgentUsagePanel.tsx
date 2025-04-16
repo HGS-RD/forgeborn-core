@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-export default function AgentUsageView() {
-  const [usage, setUsage] = useState(null);
+export default function AgentUsagePanel() {
+  const [usage, setUsage] = useState<any>(null);
 
   useEffect(() => {
     fetch('http://localhost:3001/api/agent-usage')
       .then(res => res.json())
       .then(data => setUsage(data))
-      .catch(err => console.error('Error fetching usage:', err));
+      .catch(err => console.error('Agent usage fetch failed:', err));
   }, []);
 
   return (
