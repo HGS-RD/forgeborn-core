@@ -1,0 +1,6 @@
+analyzed_files:
+  - execution_trace_2025-04-15T20-51-21-088Z.yaml
+agent_usage:
+  - name: skill_loader_agent_v1
+  - name: blueprint_optimizer_v1
+  - name: validator_agent_v1

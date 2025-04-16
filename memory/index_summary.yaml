@@ -1,0 +1,152 @@
+traces:
+  - file: execution_trace_2025-04-15T20-51-21-088Z.yaml
+    agents: []
+    date: execution_trace_2025-04-15T20-51-21-088Z.yaml
+planning:
+  - file: planning_log_2025-04-15T20-38-59-278Z.yaml
+    plan:
+      - agent: skill_loader_agent_v1
+        goal: >-
+          Scan the ./skills directory and register all .mjs modules available at
+          runtime.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: blueprint_optimizer_v1
+        goal: >-
+          Analyze agent folder health and orchestrator alignment to ensure
+          structural integrity.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: meta_orchestrator_v2
+        goal: >-
+          Execute agents based on blueprint order, skill availability, and
+          branching logic for dynamic workflows.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: validator_agent_v1
+        goal: Check for missing core or runner files and log any agent issues
+        status: ready
+        triggers: []
+        depends_on: []
+  - file: planning_log_2025-04-15T20-49-47-985Z.yaml
+    plan:
+      - agent: skill_loader_agent_v1
+        goal: >-
+          Scan the ./skills directory and register all .mjs modules available at
+          runtime.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: blueprint_optimizer_v1
+        goal: >-
+          Analyze agent folder health and orchestrator alignment to ensure
+          structural integrity.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: meta_orchestrator_v2
+        goal: >-
+          Execute agents based on blueprint order, skill availability, and
+          branching logic for dynamic workflows.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: validator_agent_v1
+        goal: Check for missing core or runner files and log any agent issues
+        status: ready
+        triggers: []
+        depends_on: []
+  - file: planning_log_2025-04-15T20-56-45-963Z.yaml
+    plan:
+      - agent: skill_loader_agent_v1
+        goal: >-
+          Scan the ./skills directory and register all .mjs modules available at
+          runtime.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: blueprint_optimizer_v1
+        goal: >-
+          Analyze agent folder health and orchestrator alignment to ensure
+          structural integrity.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: meta_orchestrator_v2
+        goal: >-
+          Execute agents based on blueprint order, skill availability, and
+          branching logic for dynamic workflows.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: validator_agent_v1
+        goal: Check for missing core or runner files and log any agent issues
+        status: ready
+        triggers: []
+        depends_on: []
+  - file: planning_log_2025-04-15T21-00-25-040Z.yaml
+    plan:
+      - agent: skill_loader_agent_v1
+        goal: >-
+          Scan the ./skills directory and register all .mjs modules available at
+          runtime.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: blueprint_optimizer_v1
+        goal: >-
+          Analyze agent folder health and orchestrator alignment to ensure
+          structural integrity.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: validator_agent_v1
+        goal: Check for missing core or runner files and log any agent issues
+        status: ready
+        triggers: []
+        depends_on: []
+  - file: planning_log_2025-04-15T21-35-22-436Z.yaml
+    plan:
+      - agent: skill_loader_agent_v1
+        goal: >-
+          Scan the ./skills directory and register all .mjs modules available at
+          runtime.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: blueprint_optimizer_v1
+        goal: >-
+          Analyze agent folder health and orchestrator alignment to ensure
+          structural integrity.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: validator_agent_v1
+        goal: Check for missing core or runner files and log any agent issues
+        status: ready
+        triggers: []
+        depends_on: []
+  - file: planning_log_2025-04-15T21-37-17-894Z.yaml
+    plan:
+      - agent: skill_loader_agent_v1
+        goal: >-
+          Scan the ./skills directory and register all .mjs modules available at
+          runtime.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: blueprint_optimizer_v1
+        goal: >-
+          Analyze agent folder health and orchestrator alignment to ensure
+          structural integrity.
+        status: ready
+        triggers: []
+        depends_on: []
+      - agent: validator_agent_v1
+        goal: Check for missing core or runner files and log any agent issues
+        status: ready
+        triggers: []
+        depends_on: []

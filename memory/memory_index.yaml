@@ -1,0 +1,9 @@
+memory:
+  - id: "m1"
+    label: "Initial planning memory"
+    type: "planning"
+    content: "DevOps agent planning complete"
+  - id: "m2"
+    label: "Evaluation memory"
+    type: "evaluation"
+    content: "Blueprint evaluated and marked trusted"

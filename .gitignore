@@ -3,4 +3,4 @@ dist/
 .env
 .DS_Store
 logs/
-memory/
+memory/.forgeborn/github_config.json

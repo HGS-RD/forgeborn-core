@@ -1,0 +1,6 @@
+{
+  "id": 3,
+  "text": "Generate the folder structure and starter implementation for `builder_agent_v1`, which analyzes a Markdown agent spec and generates agent source files.",
+  "source": "rc_forgeborn_core_v1_plan.md",
+  "trust": "trustworthy"
+}
