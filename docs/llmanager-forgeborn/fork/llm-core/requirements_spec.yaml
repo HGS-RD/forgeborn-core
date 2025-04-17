@@ -1,0 +1,9 @@
+requirements:
+  - id: RQ-LLM-001
+    desc: Must allow LLM agent execution inside Forgeborn skill routing
+  - id: RQ-LLM-002
+    desc: Must record usage in Supabase and memory trace
+  - id: RQ-LLM-003
+    desc: Must support dynamic routing to OpenAI, Claude, Gemini, Grok
+  - id: RQ-LLM-004
+    desc: Must provide fallback if API key or model is not available

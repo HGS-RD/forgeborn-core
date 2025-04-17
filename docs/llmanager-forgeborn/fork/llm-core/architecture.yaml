@@ -1,0 +1,11 @@
+architecture:
+  name: llmanager-fork
+  purpose: Lightweight agent executor for Forgeborn multi-agent strategies
+  core_components:
+    - agent_registry
+    - skill_runner
+    - supabase_logger
+    - strategy_bridge
+  dependencies:
+    - openai, anthropic, google (Gemini), x.ai (Grok)
+    - supabase-js, dotenv
