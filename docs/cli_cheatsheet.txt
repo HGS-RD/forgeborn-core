@@ -1,0 +1,6 @@
+# CLI Usage Cheatsheet
+
+factory plan
+factory run rc3
+factory test:models
+factory export:phase 13

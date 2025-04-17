@@ -1,0 +1,15 @@
+{
+  "node_version": "20",
+  "graphs": {
+    "agent": "./src/llmanager/index.ts:graph"
+  },
+  "env": ".env",
+  "dependencies": ["."],
+  "store": {
+    "index": {
+      "embed": "openai:text-embedding-3-large",
+      "dims": 3072,
+      "fields": ["input"]
+    }
+  }
+}

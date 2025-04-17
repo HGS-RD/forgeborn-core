@@ -1,0 +1,13 @@
+phases:
+  - id: 11
+    name: LLMManager Integration
+    folder: phase11_llmmanager
+  - id: 12
+    name: Model Feedback Strategy
+    folder: phase12_model_feedback
+  - id: 13
+    name: Dashboard Panel Wiring
+    folder: phase13_dashboard_wiring
+  - id: 14
+    name: Execution Timeline & Diff
+    folder: phase14_execution_timeline

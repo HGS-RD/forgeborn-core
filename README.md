@@ -1,28 +1,36 @@
-// Copyright (c) 2025 Hillstrong Group Security. All rights reserved.
-// Use of this source code is governed by the custom license found in the LICENSE file.
+# 📘 Forgeborn Documentation Index
 
-# Forgeborn Core (Internal - Hillstrong)
+Welcome to the internal documentation for the Forgeborn AI-Native Software Factory.
 
-**Forgeborn** is Hillstrong’s internal AI-native software factory. It enables recursive agent-based software development that plans, executes, evaluates, and evolves intelligent code systems automatically.
+## 🧠 Core Concepts
+- [Vision](docs/overview/vision.md)
+- [System Architecture](docs/overview/architecture.md)
+- [Requirements Specification](docs/overview/requirements.md)
 
-## 🧠 Capabilities
-- Accepts business goals through CLI
-- Autonomously generates blueprints
-- Executes planning, evaluation, memory, documentation, and governance
-- All interactions are logged, scored, and stored in memory
-- Designed for secure, private deployments across Hillstrong projects
+## 🛠️ Developer Guide
+- [Developer Onboarding Guide](docs/developer_guide/developer_guide.md)
+- [CLI Usage Manual](docs/developer_guide/cli.md)
+- [Agent State Lifecycle](docs/developer_guide/agent_state_lifecycle.md)
+- [Blueprint System](docs/developer_guide/blueprints.md)
+- [Skills Module Reference](docs/developer_guide/skills.md)
+- [Traceability Model](docs/developer_guide/traceability_model.md)
 
-## 🛡️ Security & Scope
-This repository is **private and proprietary**. All code, agents, and logic are for internal Hillstrong development use only. Do not distribute externally.
+## 🔗 Integration & Platform
+- [Supabase Schema Reference](docs/integration/supabase_schema_reference.md)
+- [LLM Selection Strategy](docs/integration/llm_selection_strategy.md)
+- [Integration Guide](docs/integration/integration.md)
 
-## 🔁 Internal Usage Example
-```bash
-factory new "Build a system to automate site-level risk scoring"
-cd agent_execution_engine_v2
-npm start
-```
+## 🧬 Forks and Extensions
+- [LLMManager Integration](docs/integration/forks/llmmanager/integration_notes.md)
 
-## 📁 Structure
-Refer to `docs/factory_overview.md` for self-generated system architecture and agent roles.
+## 🧪 Quality, Testing, and CI/CD
+- [Contribution Guidelines](docs/quality/contributing.md)
+- [Testing and Contribution Standards](docs/quality/testing_and_contribution.md)
+- [CI/CD Pipeline Overview](docs/quality/cicd_pipeline.md)
+- [Linting Standards](docs/quality/linting_standards.md)
+- [Code Governance](docs/quality/code_governance.md)
+- [Rule Enforcement](docs/quality/rules.md)
+- [Cline CLI Guardrails](docs/quality/clined-rules.md)
 
-For questions or system onboarding, contact the factory admin or Hillstrong engineering.
+## 🔐 Security
+- [Security Requirements](docs/security/security_requirements.md)
