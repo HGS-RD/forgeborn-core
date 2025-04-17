@@ -1,0 +1,17 @@
+import 'dotenv/config';
+
+export async function callOpenAI(prompt) {
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4o",
+      messages: [{ role: "user", content: prompt }],
+    }),
+  });
+  const json = await response.json();
+  return json.choices?.[0]?.message?.content || "No response";
+}

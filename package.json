@@ -27,6 +27,7 @@
     "@octokit/rest": "^21.1.1",
     "@supabase/supabase-js": "^2.49.4",
     "dotenv": "^16.5.0",
+    "postgres": "^3.4.5",
     "simple-git": "^3.27.0"
   }
 }
