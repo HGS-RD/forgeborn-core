@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Router from './routes/routes';
-import { PersonaProvider } from '../hooks/usePersonaContext';
+import Router from './routes';
+import { PersonaProvider } from './hooks/usePersonaContext';
 
 export default function App() {
   return (
