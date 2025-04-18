@@ -1,5 +1,7 @@
-import { graph } from "../agents/llmmanager/src/llmanager/index.mjs";
-import { supabaseStore } from "../agents/llmmanager/src/utils/supabase-client.mjs"; // ✅ make sure this exists
+// Full Path: /Users/rogerhill/Documents/GitHub/forgeborn-core/cli_commands/call_llm.mjs
+
+import { graph } from "/Users/rogerhill/Documents/GitHub/forgeborn-core/agents/llmmanager/src/llmanager/index.mjs";
+import { supabaseStore } from "/Users/rogerhill/Documents/GitHub/forgeborn-core/agents/llmmanager/src/utils/supabase-client.mjs";
 import readline from "readline";
 
 const [, , taskType, ...promptParts] = process.argv;
@@ -17,10 +19,11 @@ try {
   const result = await graph.invoke(
     { query: prompt },
     {
-      store: supabaseStore, // ✅ uses your connected Supabase backend
+      store: supabaseStore,
       configurable: {
-        assistant_id: "factory-observability", // 🔁 tweak per use case
-        modelId: "anthropic/claude-3-7-sonnet-latest",
+        assistant_id: "factory-observability",
+        modelId: "openai/gpt-4o",               // ✅ Updated model
+        modelProvider: "openai",                // ✅ Required for LangGraph routing
         approvalCriteria: "Supports proactive downtime mitigation.",
         rejectionCriteria: "Reactive-only, non-correlated approaches.",
       },

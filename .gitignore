@@ -5,3 +5,6 @@ dist/
 logs/
 memory/.forgeborn/github_config.json
 .forgeborn/github_config.json
+
+# LangGraph API
+.langgraph_api

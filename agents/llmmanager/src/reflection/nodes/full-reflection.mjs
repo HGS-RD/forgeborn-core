@@ -1,5 +1,7 @@
+// File: agents/llmmanager/src/reflection/nodes/full-reflection.mjs
+
 import { getReflections } from "../../stores/reflection.mjs";
-import { ChatAnthropic } from "@langchain/anthropic";
+import { callLLM } from "../../../../../adapters/llm_adapter.mjs";
 
 /**
  * Builds a detailed reflection prompt to help the AI self-correct its reasoning.
@@ -39,24 +41,15 @@ export async function fullReflection(state, config) {
     reflections: reflections,
   });
 
-  const modelWithTools = new ChatAnthropic({
-    model: "claude-3-7-sonnet-latest",
-    maxTokens: 4500,
-    thinking: {
-      type: "enabled",
-      budget_tokens: 3072,
-    },
+  const response = await callLLM({
+    prompt,
+    model: "gpt-4o",
+    agentName: "llmmanager_reflection",
+    task: "reflection"
   });
 
-  const response = await modelWithTools.invoke([
-    {
-      role: "human",
-      content: prompt,
-    },
-  ]);
-
   return {
-    reflectionsSummary: response.content,
+    reflectionsSummary: response,
   };
 }
 

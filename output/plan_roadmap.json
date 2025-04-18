@@ -1,0 +1,3 @@
+✅ Supabase store initialized with table: langgraph_states
+🧠 Calling model for: planner
+💬 Prompt: Give me a risk-based roadmap for factory observability --config={"configurable":{"modelId":"openai/gpt-4o"}}

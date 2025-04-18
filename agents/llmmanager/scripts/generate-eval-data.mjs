@@ -10,7 +10,7 @@ async function main() {
       .describe("The generated requests to be used to test the agent"),
   });
   const model = new ChatOpenAI({
-    model: "gpt-4.5-preview-2025-02-27",
+    model: "gpt-4o", // Updated to standardized model
     temperature: 0.7,
   }).bindTools(
     [

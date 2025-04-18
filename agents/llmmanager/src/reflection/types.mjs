@@ -23,7 +23,7 @@ export const ReflectionZodConfiguration = z.object({
   /**
    * The model ID to use for the reflection generation.
    * Should be in the format `provider/model_name`.
-   * Defaults to `anthropic/claude-3-7-sonnet-latest`.
+   * Defaults to `openai/gpt-4o`.
    */
   modelId: z.string().optional(),
 });

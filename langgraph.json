@@ -1,0 +1,6 @@
+{
+    "graphs": {
+      "llmanager": "agents/llmmanager/src/llmanager/index.mjs:graph"
+    }
+  }
+  

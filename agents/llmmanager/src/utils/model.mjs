@@ -1,16 +1,17 @@
+// /Users/rogerhill/Documents/GitHub/forgeborn-core/agents/llmmanager/src/utils/model.mjs
 import { initChatModel } from "langchain/chat_models/universal";
 
 /**
  * Loads a chat model from the configuration object.
- * Defaults to `anthropic/claude-3-7-sonnet-latest`.
+ * Defaults to `openai/gpt-4o`.
  *
  * @param {object} config - LangGraphRunnableConfig (must include modelId or default will be used)
  * @param {object} [modelConfig] - Optional model parameters
  * @returns {Promise<any>} - A chat model with .call() and .bindTools()
  */
 export async function loadModelFromConfig(config, modelConfig = {}) {
-  const modelId =
-    config.configurable?.modelId ?? "anthropic/claude-3-7-sonnet-latest";
+  // ✅ Use gpt-4o as default now
+  const modelId = config.configurable?.modelId ?? "openai/gpt-4o";
 
   const provider = modelId.split("/")[0];
   const modelName = modelId.split("/").slice(1).join("/");

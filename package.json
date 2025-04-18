@@ -13,9 +13,14 @@
     "orchestrate:v2": "node agents/meta_orchestrator_v2/run_meta_orchestrator_v2.mjs",
     "validate:agents": "node agents/validator_agent_v1/run_validator_agent_v1.mjs",
     "plan": "node agents/planning_agent_v1/run_planning_agent_v1.mjs",
-    "start": "concurrently \"vite\" \"node server/server.js\""
+    "start": "concurrently \"vite\" \"node server/server.js\"",
+    "dev": "langgraphjs dev --port 2025 --no-browser",
+    "test:llm": "node agents/llm_test_agent_v1/run_llm_test_agent_v1.mjs",
+    "test:llm:single": "node agents/llm_test_agent_v1/run_llm_test_agent_v1.mjs single",
+    "validate:router": "node scripts/validate-llm-router.mjs"
   },
   "devDependencies": {
+    "@langchain/langgraph-cli": "^0.0.25",
     "@types/node": "^20.11.4",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
@@ -28,10 +33,16 @@
     "@langchain/community": "^0.3.41",
     "@langchain/core": "^0.3.45",
     "@langchain/langgraph": "^0.2.64",
+    "@langchain/openai": "^0.5.5",
     "@octokit/rest": "^21.1.1",
     "@supabase/supabase-js": "^2.49.4",
     "dotenv": "^16.5.0",
+    "langchain": "^0.3.22",
+    "langsmith": "^0.3.18",
     "postgres": "^3.4.5",
-    "simple-git": "^3.27.0"
-  }
+    "simple-git": "^3.27.0",
+    "uuid": "^11.1.0",
+    "zod": "^3.24.3"
+  },
+  "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
 }
