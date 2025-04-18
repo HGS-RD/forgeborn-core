@@ -1,7 +1,7 @@
 {
   "node_version": "20",
   "graphs": {
-    "agent": "./index.mjs:graph"
+    "agent": "./src/llmanager/index.mjs:graph"
   },
   "env": ".env",
   "dependencies": ["."],
