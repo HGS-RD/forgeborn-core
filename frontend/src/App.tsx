@@ -1,14 +1,15 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Router from './routes';
-import { PersonaProvider } from './hooks/usePersonaContext';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DashboardWelcomeCard from "./components/DashboardWelcomeCard";
 
 export default function App() {
   return (
-    <PersonaProvider>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    </PersonaProvider>
+    <BrowserRouter>
+      <main className="p-8">
+        <Routes>
+          <Route path="/" element={<DashboardWelcomeCard />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
   );
 }

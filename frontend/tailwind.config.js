@@ -1,8 +1,7 @@
-import { fontFamily } from "tailwindcss/defaultTheme";
-import colors from "tailwindcss/colors";
+// /frontend/tailwind.config.js
+const defaultTheme = require("tailwindcss/defaultTheme");
 
-/** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./main.jsx",
@@ -11,10 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", ...fontFamily.sans],
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        ...colors, // 🔥 includes bg-gray-50 and all default colors
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: "hsl(var(--primary))",
@@ -24,7 +22,6 @@ export default {
     },
   },
   plugins: [
-    require("@tailwindcss/postcss"),
     require("tailwindcss-animate"),
   ],
 };

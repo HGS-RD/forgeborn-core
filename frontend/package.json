@@ -1,24 +1,13 @@
 {
   "name": "forgeborn-dashboard",
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "dev": "vite"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.4",
-    "@vitejs/plugin-react": "^4.4.0",
-    "autoprefixer": "^10.4.16",
-    "clsx": "^2.1.0",
-    "postcss": "^8.4.31",
-    "tailwind-merge": "^2.3.0",
+    "@vitejs/plugin-react": "^4.0.4",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.30",
     "tailwindcss": "^4.1.4",
     "tailwindcss-animate": "^1.0.7",
     "vite": "^6.3.2"
