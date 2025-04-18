@@ -1,41 +1,32 @@
 import React from "react";
 import { useTheme } from "../contexts/ThemeContext";
 
-const PreferencesPanel = () => {
-  const { theme, setTheme } = useTheme();
+const PreferencesPanel: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="preferences-panel">
-      <h2>Theme Settings</h2>
-      <div>
-        <label>
-          <input
-            type="radio"
-            value="light"
-            checked={theme === "light"}
-            onChange={() => setTheme("light")}
-          />
-          Light
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="dark"
-            checked={theme === "dark"}
-            onChange={() => setTheme("dark")}
-          />
-          Dark
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="system"
-            checked={theme === "system"}
-            onChange={() => setTheme("system")}
-          />
-          System
-        </label>
-      </div>
+    <div style={{ 
+      padding: "1rem", 
+      marginTop: "1rem",
+      background: "var(--bg-accent)",
+      borderRadius: "6px",
+      border: "1px solid var(--border-color)"
+    }}>
+      <h2 style={{ marginTop: 0 }}>User Preferences</h2>
+      <p>Current Theme: {theme}</p>
+      <button 
+        onClick={toggleTheme}
+        style={{
+          padding: "0.5rem 1rem",
+          background: "var(--button-bg)",
+          color: "var(--button-text)",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer"
+        }}
+      >
+        Switch to {theme === "light" ? "Dark" : "Light"} Mode
+      </button>
     </div>
   );
 };

@@ -1,11 +1,19 @@
-import * as React from "react"
-import { Section } from "@/components/ui/section"
+import React from "react";
+import TopNav from "../views/TopNav";
+import SideNav from "../views/SideNav";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b p-4 text-xl font-bold">🧠 Forgeborn Dashboard</header>
-      <Section>{children}</Section>
+    <div style={{ display: "flex", height: "100vh" }}>
+      <SideNav />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <TopNav />
+        <main style={{ padding: "1rem" }}>
+          {children}
+        </main>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default DashboardLayout;

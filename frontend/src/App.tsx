@@ -1,10 +1,19 @@
 import React from "react";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import DashboardLayout from "./layouts/DashboardLayout";
+import MainContent from "./components/MainContent";
+import ErrorBoundary from "./components/ErrorBoundary";
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <div>
-      <h1>Hello, Forgeborn</h1>
-      <p>This is working without Tailwind.</p>
-    </div>
+    <ThemeProvider>
+      <ErrorBoundary>
+        <DashboardLayout>
+          <MainContent />
+        </DashboardLayout>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
-}
+};
+
+export default App;

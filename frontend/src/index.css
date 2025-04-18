@@ -1,7 +1,31 @@
-@import "./theme.css";
-
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 1rem;
-}
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --bg-accent: #f0f0f0;
+    --nav-bg: #f8f8f8;
+    --nav-text: #333333;
+    --sidebar-bg: #efefef;
+    --sidebar-text: #333333;
+    --border-color: #dddddd;
+    --button-bg: #4a7dfc;
+    --button-text: #ffffff;
+  }
+  
+  [data-theme="dark"] {
+    --bg-color: #0f1117;
+    --text-color: #f4f4f4;
+    --bg-accent: #1e1e24;
+    --nav-bg: #1f1f1f;
+    --nav-text: #ffffff;
+    --sidebar-bg: #2b2b2b;
+    --sidebar-text: #ffffff;
+    --border-color: #444444;
+    --button-bg: #3a67d2;
+    --button-text: #ffffff;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
