@@ -7,12 +7,11 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@layouts': path.resolve(__dirname, 'src/layouts'),
-      '@views': path.resolve(__dirname, 'src/views'),
-      '@routes': path.resolve(__dirname, 'src/routes'),
-      '@hooks': path.resolve(__dirname, 'src/hooks'),
-      '@theme': path.resolve(__dirname, 'src/theme'),
-    },
-  },
+      '@components': path.resolve(__dirname, './src/components'),
+      '@views': path.resolve(__dirname, './src/views'),
+      '@layouts': path.resolve(__dirname, './src/layouts'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@routes': path.resolve(__dirname, './src/routes'),
+    }
+  }
 });

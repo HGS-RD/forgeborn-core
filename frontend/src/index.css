@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Using standard Tailwind classes instead of custom utilities */
 body {
-  @apply bg-background text-foreground font-sans;
+  @apply bg-white text-gray-800 font-sans;
 }
