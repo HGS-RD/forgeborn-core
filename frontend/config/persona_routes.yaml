@@ -1,0 +1,13 @@
+routes:
+  CTO:
+    - GovernancePanel
+    - DeploymentQueue
+  Agent Engineer:
+    - AgentSpecs
+    - PatchViewer
+  Auditor:
+    - GovernancePanel
+    - ReflectionTimeline
+  Ops:
+    - DeploymentQueue
+    - LLMUsagePanel
