@@ -1,20 +1,18 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import AppShell from '@layouts/AppShell';
-import PlanningPanel from '@views/PlanningPanel';
-import CatalogView from '@views/CatalogView';
-import TimelineSimulation from '@views/TimelineSimulation';
-import ProjectHealthDashboard from '@views/ProjectHealthDashboard';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<AppShell persona="CTO" />}>
-        <Route index element={<PlanningPanel />} />
-        <Route path="catalog" element={<CatalogView />} />
-        <Route path="timeline" element={<TimelineSimulation />} />
-        <Route path="dashboard" element={<ProjectHealthDashboard />} />
-      </Route>
+      <Route
+        path="/"
+        element={
+          <div className="p-10 bg-white text-gray-900 rounded shadow">
+            <h1 className="text-2xl font-bold">🎉 Tailwind Is Working</h1>
+            <p className="mt-2 text-base">Styles are now applying correctly!</p>
+          </div>
+        }
+      />
     </Routes>
   );
 }
