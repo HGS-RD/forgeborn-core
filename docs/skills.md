@@ -1,5 +1,5 @@
 # Skills Module Reference
 
-Overview of available skills and their purposes.
+Overview of available skills and their purpose.
 
 Instructions for adding or modifying skills.
