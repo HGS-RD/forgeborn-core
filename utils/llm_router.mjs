@@ -1,8 +1,6 @@
-// /utils/llm_router.mjs
-
 import { callOpenAI } from '../llm_router/providers/openai.mjs';
 import { callClaude } from '../llm_router/providers/claude.mjs';
-import { callGemini } from '../llm_router/providers/gemini.mjs';
+// import { callGemini } from '../llm_router/providers/gemini.mjs'; // Gemini temporarily disabled
 import fs from 'fs/promises';
 import path from 'path';
 import 'dotenv/config';
@@ -22,8 +20,7 @@ export async function routeLLM({ prompt, model = 'gpt-4o', agentName = 'unknown'
         response = await callClaude(prompt, normalizedModel.model);
         break;
       case "google":
-        response = await callGemini(prompt, normalizedModel.model);
-        break;
+        throw new Error('Gemini support is currently disabled — awaiting stable SDK and model access.');
       case "openai":
       default:
         response = await callOpenAI(prompt, normalizedModel.model || 'gpt-4o');
@@ -74,6 +71,10 @@ function normalizeModelName(model) {
     case 'gpt-3.5':
     case 'gpt-3.5-turbo':
       return { provider: 'openai', model: 'gpt-3.5-turbo' };
+    case 'mistral':
+      throw new Error('Mistral support has been removed — model not available.');
+    case 'gemini':
+      throw new Error('Gemini support is currently disabled — model not available.');
     default:
       return { provider: 'openai', model };
   }
