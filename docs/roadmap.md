@@ -22,20 +22,22 @@ Forgeborn is a self-evolving, agent-powered software factory designed to autonom
 
 ---
 
-## ✅ Completed Phases (1–10)
+## ✅ Completed Phases (1–11)
 
-| Phase | Component | Status | Highlights |
-| --- | --- | --- | --- |
-| 1 | CLI Bootstrapping | ✅ | `factory new`, agent blueprint generation |
-| 2 | Core Agent Templates | ✅ | Standard folder structure, CLI runnable |
-| 3 | Planning + Evaluator Agents | ✅ | Planning + blueprint trust scoring |
-| 4 | Dynamic Skill Loader | ✅ | `.mjs` plugins loaded at runtime |
-| 5 | Memory Stewardship | ✅ | Chunking, YAML memory, long-term logs |
-| 6 | Reflection + Trace Logging | ✅ | Cycle memory + reflection snapshot generated |
-| 7 | Supabase Client + Logging Layer | ✅ (API blocked) | `llm_logs` schema built, insert issue under debug |
-| 8 | Docs Agent + Meta Orchestrator | ✅ | Agent-to-agent control loop live |
-| 9 | Frontend Bootstrapping | ✅ | React + Tailwind + Vite, local dashboard running |
-| 10 | Dashboard Layout Spec | ✅ | Memory, reflection, agent usage panel plans created |
+| Phase | Component                    | Status | Highlights |
+|-------|------------------------------|--------|------------|
+| 1     | CLI Bootstrapping            | ✅     | `factory new`, agent blueprint generation |
+| 2     | Core Agent Templates         | ✅     | Standard folder structure, CLI runnable |
+| 3     | Planning + Evaluator Agents  | ✅     | Planning + blueprint trust scoring |
+| 4     | Dynamic Skill Loader         | ✅     | `.mjs` plugins loaded at runtime |
+| 5     | Memory Stewardship           | ✅     | Chunking, YAML memory, long-term logs |
+| 6     | GitHub Agent + Trace Logging | ✅     | PR creation + execution memory tracing |
+| 7     | Supabase Client + Logging    | ✅     | Vector + trace log writing to Supabase |
+| 8     | Reflection + Repair Agents   | ✅     | Blueprint repair + self-healing loop |
+| 9     | Frontend Bootstrapping       | ✅     | React + Tailwind + Vite, local dashboard running |
+| 10    | Dashboard Layout Spec        | ✅     | Memory, reflection, agent usage panel plans created |
+| 11    | Rule Compliance Framework    | ✅     | All agents pass structure/filename checks via `check:rules` |
+
 
 ---
 

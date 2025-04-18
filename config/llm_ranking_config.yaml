@@ -1,0 +1,5 @@
+ranking_rules:
+  default: [gpt-4o, claude-3-opus-20240229, gpt-3.5-turbo]
+  codegen: [gpt-4o, claude-3-opus-20240229]
+  summarization: [claude-3-opus-20240229, gpt-4o]
+  evaluation: [gpt-4o, claude-3-opus-20240229]

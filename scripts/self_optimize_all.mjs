@@ -1,0 +1,1 @@
+console.log('🔁 Running full self-optimization cycle...');
