@@ -1,246 +1,65 @@
-# Roadmap
 
-Status: Draft
+# Forgeborn Project Roadmap
 
-# 📘 Forgeborn-Core Project Roadmap (v2)
-
----
-
-**Title:** Autonomous AI-Native Software Factory with Agentic RAG, Multi-LLM Routing, and Role-Aware UX
-
-**Date:** April 17, 2025
-
-**Owner:** Roger Hill
-
-**Lead Architect:** ChatGPT
+**Project:** Forgeborn – AI-Native Software Factory  
+**Maintainer:** Roger Hill  
+**Architect:** ChatGPT  
+**Version:** 1.0  
+**Last Updated:** 2025-04-19
 
 ---
 
-## 🚀 Executive Summary
+## 🎯 Vision
+To deliver an end-to-end AI-native software factory capable of planning, building, validating, and deploying software using autonomous agents and an enterprise-grade UI.
 
-Forgeborn is a self-evolving, agent-powered software factory designed to autonomously plan, generate, execute, and refine software systems through blueprint-driven recursive agent execution. The architecture integrates LLMs, reflection, memory, and user interfaces across distinct user personas. This document outlines the full roadmap from completed milestones through upcoming strategic phases, including new integration of `llmmanager` for intelligent multi-LLM orchestration.
-
----
-
-## ✅ Completed Phases (1–11)
-
-| Phase | Component                    | Status | Highlights |
-|-------|------------------------------|--------|------------|
-| 1     | CLI Bootstrapping            | ✅     | `factory new`, agent blueprint generation |
-| 2     | Core Agent Templates         | ✅     | Standard folder structure, CLI runnable |
-| 3     | Planning + Evaluator Agents  | ✅     | Planning + blueprint trust scoring |
-| 4     | Dynamic Skill Loader         | ✅     | `.mjs` plugins loaded at runtime |
-| 5     | Memory Stewardship           | ✅     | Chunking, YAML memory, long-term logs |
-| 6     | GitHub Agent + Trace Logging | ✅     | PR creation + execution memory tracing |
-| 7     | Supabase Client + Logging    | ✅     | Vector + trace log writing to Supabase |
-| 8     | Reflection + Repair Agents   | ✅     | Blueprint repair + self-healing loop |
-| 9     | Frontend Bootstrapping       | ✅     | React + Tailwind + Vite, local dashboard running |
-| 10    | Dashboard Layout Spec        | ✅     | Memory, reflection, agent usage panel plans created |
-| 11    | Rule Compliance Framework    | ✅     | All agents pass structure/filename checks via `check:rules` |
-
+The roadmap below defines the phased evolution of the Forgeborn platform across backend agents, frontend UI, DevOps automation, and governance.
 
 ---
 
-## 🆕 Phases 11–20: Strategic Evolution & UX Platform Expansion
+## 🗺️ Phase Overview
 
-### 🔁 Phase 11: `llmmanager` Integration
-
-> Goal: Replace static LLM calls with dynamic, ranked, provider-agnostic execution using forked llmmanager.
-> 
-
-### Deliverables:
-
-- Fork `llmmanager` to `forgeborn-llmmanager`
-- Wrap in `llm_adapter.mjs` to:
-    - Route by task type, agent, or blueprint goal
-    - Log latency, success, tokens
-    - Write to `model_stats` Supabase table
-- YAML config: `llm_strategy.yaml`
-- CLI tool: `factory test:models`
-
----
-
-### 🧠 Phase 12: Model Feedback Intelligence
-
-> Goal: Learn from model history to optimize future model choices.
-> 
-
-### Agent: `model_strategy_agent_v1`
-
-- Inputs: reflection logs, llm_logs
-- Outputs: forced-ranking suggestions (e.g. Claude > GPT for evaluators)
-
-### Supabase:
-
-- Table: `model_strategy_recs`
-- UI Panel: LLM routing timeline + override toggle
+| Phase | Title | Status | ETA | Notes |
+|-------|-------|--------|-----|-------|
+| 1 | ESM Agent Architecture + CLI | ✅ Complete | - | Rule engine + CLI bootstrapped |
+| 2 | Planning Agent + RC Execution | ✅ Complete | - | RC3 executed with blueprint mapping |
+| 3 | Supabase Integration | ✅ Complete | - | Logging connected via REST API |
+| 4 | DevOps Agent (infra scaffold) | ✅ Complete | - | Infrastructure agent pipeline online |
+| 5 | Builder Agent | ✅ Complete | - | Supports codegen from spec/blueprint |
+| 6 | GitHub Agent + PR Flow | ✅ Complete | - | PR/CI/CD lifecycle built in |
+| 7 | Memory + Trace Logging | ✅ Complete | - | Vector-based log + YAML snapshotting |
+| 8 | Reflection + Blueprint Repair | ✅ Complete | - | Cognitive loop repairs malformed plans |
+| 9 | LLM Strategy + Ranking Agent | ✅ Complete | - | Model selection config complete |
+| 10 | UI Bootstrapping (Catalyst) | ✅ Complete | - | Vite + Catalyst UI Pro wired up |
+| 11 | Autopilot Agent | ✅ Complete | - | Multi-agent planner executor loop |
+| 12 | Self-Optimizer + Trace Loop | ✅ Complete | - | Generates patch plans for improvement |
+| 13 | Patch Generator + Diff Engine | ✅ Complete | - | Diffs blueprints and agents |
+| 14 | CI Event Listener Agent | ✅ Complete | - | PR event watcher hooked to GitHub |
+| 15 | CI Validator Agent | ✅ Complete | - | Lint/structure checks pre-merge |
+| 16 | Autodeploy Agent | ✅ Complete | - | Deploy manifest builder |
+| 17 | Deploy Executor Agent | ✅ Complete | - | Runs multi-step production launch |
+| 18 | Governance Observer Agent | 🚧 In Progress | Apr 2025 | Monitors architecture & rules |
+| 19 | UADL UI Staging + Navigation | ⏳ Planned | Apr 2025 | Use `/docs/ui_ux/ui_stage_layouts.md`, `navigation_map.md` for UI planning |
+| 20 | Supabase Memory Timeline Views | ⏳ Planned | Apr/May 2025 | Memory & LLM logs in dashboard |
+| 21 | Agent History + Graph Viz | ⏳ Planned | May 2025 | Codebase intelligence + graph mapping |
+| 22 | Runtime Permissions Agent | ⏳ Planned | May 2025 | Sandboxing and write policy routing |
+| 23 | LLM Plugin Framework | ⏳ Planned | May 2025 | Skill-based dynamic execution plugins |
+| 24 | Meta-Agent Reflex Engine | ⏳ Planned | Jun 2025 | Self-improvement & coordination layer |
 
 ---
 
-### 💻 Phase 13: Dashboard Panel Wiring
-
-> Goal: Activate real-time panel population
-> 
-
-### Panels:
-
-- ✅ Memory Summary → YAML files
-- ✅ Reflection View → latest snapshot
-- ✅ Agent Usage → log/blueprint-derived stats
-- 🔜 LLM Logs → grouped by model, agent, latency
+## 🔄 Maintenance Cadence
+- **Weekly**: Evaluate agent logs and blueprint diffs.
+- **Biweekly**: Update roadmap phase statuses.
+- **Monthly**: Review with Roger and publish dashboard export.
 
 ---
 
-### 📊 Phase 14: Execution Timeline + Diff View
-
-> Goal: Trace agent runs and compare blueprint vs output.
-> 
-
-### Features:
-
-- Gantt-style timeline with agent execution and result
-- Diff viewer: blueprint vs reflection vs skill call
+## 🧠 Meta Note
+The roadmap is used to drive all `development_plan.md` phases and Cline execution prompts. Each new phase will also trigger an update to `/docs/roadmap.md`, `/logs/`, and GitHub milestones.
 
 ---
 
-### 🧩 Phase 15: DevOps + Integration Agents
-
-> Goal: Provision external services, secrets, and tokens.
-> 
-
-### Agents:
-
-- `devops_agent_v2`
-- `secrets_agent_v1`
-- `integration_agent_v1` (GitHub, Slack, APIs)
-
----
-
-### 🧠 Phase 16: Self-Healing Blueprint Execution
-
-> Goal: Repair flawed blueprints and reflect errors autonomously.
-> 
-
-### Agents:
-
-- `blueprint_repair_agent_v1`
-- `skill_suggester_agent_v1`
-- `agent_scorecard_agent_v1`
-
----
-
-### 🧱 Phase 17: Persona-Centric UX Views
-
-> Goal: Tailor UI/UX to roles: Founder, Architect, Operator, Integrator
-> 
-
-### Dashboard Features:
-
-| Persona | Needs | Features |
-| --- | --- | --- |
-| Founder | Milestone KPIs | High-level stats, trace timelines |
-| Architect | Traceability | Memory diff, reflection evolution |
-| Operator | System health | Logs, errors, retry queue |
-| Integrator | Plugin integration | API keys, custom skills |
-
----
-
-### 🔒 Phase 18: Role-Based Access + Secrets Vault
-
-> Goal: Harden access and control credentials.
-> 
-
-### Deliverables:
-
-- Supabase-based RBAC via JWT auth
-- `.env` manager
-- Secrets logging and access history
-
----
-
-### 🔁 Phase 19: Intelligent Cycle Evaluation
-
-> Goal: Meta evaluation of factory behavior and drift.
-> 
-
-### Agent:
-
-- `cycle_evaluator_v1`: ranks RC effectiveness
-- `goal_alignment_agent`: checks drift from original mission
-
----
-
-### 📦 Phase 20: Phase Bundling + Remote Factory Support
-
-> Goal: Pack each phase as a zip deliverable, enable API deployment
-> 
-
-### Bundles:
-
-- `phase11_llmmanager_bundle.zip`
-- `phase12_model_feedback_bundle.zip`
-- Full `forgeborn_phase_manifest.yaml`
-
----
-
-## 📐 Supabase Schema Summary (New Tables)
-
-```sql
--- Existing
-CREATE TABLE forgeborn.llm_logs (
-  rc_id TEXT,
-  agent TEXT,
-  message TEXT,
-  level TEXT,
-  timestamp TIMESTAMP DEFAULT now()
-);
-
--- New
-CREATE TABLE forgeborn.model_stats (
-  model_name TEXT,
-  provider TEXT,
-  latency_ms INT,
-  tokens INT,
-  success BOOLEAN,
-  timestamp TIMESTAMP DEFAULT now()
-);
-
-CREATE TABLE forgeborn.model_strategy_recs (
-  rc_id TEXT,
-  agent TEXT,
-  best_model TEXT,
-  reason TEXT,
-  timestamp TIMESTAMP DEFAULT now()
-);
-
-```
-
----
-
-## 🛠️ Internal Bundling Model
-
-Each roadmap phase may now include a zipped artifact bundle:
-
-- Agent folder
-- Blueprint
-- Sample outputs
-- Supabase schema patch (SQL)
-- CLI tool if applicable
-- README/UX notes
-
----
-
-## 📘 Final Notes
-
-With `llmmanager` included, Forgeborn will become a **multi-model intelligent AI factory**, capable of:
-
-- Choosing best model for the task based on past performance
-- Healing itself through memory and reflection
-- Powering different user personas from blueprint to deployment
-
-Let me know if you'd like this:
-
-- Saved as `forgeborn_roadmap_v2.md`
-- Bundled as `forgeborn_roadmap_bundle_v2.zip` with Mermaid Gantt + GitHub JSON board + SQL files
-
-Ready to package or proceed to next phase when you are.
+## 📎 Related Documents
+- [Development Plan](./development_plan.md)
+- [Rules & Structure](../rules.md)
+- [UI Design Docs](./ui_ux/ui_stage_layouts.md), [theme_tokens.md](./ui_ux/theme_tokens.md), [component_library_map.md](./ui_ux/component_library_map.md), [navigation_map.md](./ui_ux/navigation_map.md)
