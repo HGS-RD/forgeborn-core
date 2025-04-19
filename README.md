@@ -34,3 +34,13 @@ Welcome to the internal documentation for the Forgeborn AI-Native Software Facto
 
 ## 🔐 Security
 - [Security Requirements](docs/security/security_requirements.md)
+
+
+## 📋 Execution Framework
+
+The following documents guide the AI agent (Cline) and execution strategy for the Forgeborn system:
+
+- [📅 Roadmap](docs/roadmap.md)
+- [🛠 Development Plan](docs/development_plan.md)
+- [🤖 Cline Execution Guide](docs/cline_guide.md)
+- [📏 Rules & Guardrails](docs/rules.md)
