@@ -8,8 +8,15 @@
  */
 
 // Import required libraries
-const https = require('https');
-const { execSync } = require('child_process');
+import https from 'https';
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+import fs from 'fs';
+
+// Get current directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // ANSI color codes for terminal output
 const colors = {
@@ -321,11 +328,12 @@ const checkSupabaseLibraries = () => {
   console.log(`\n${colors.cyan}Checking for Supabase client libraries:${colors.reset}`);
   
   try {
-    const packageJsonPath = './package.json';
+    const packageJsonPath = resolve(__dirname, '../package.json');
     let packageJson;
     
     try {
-      packageJson = require(packageJsonPath);
+      const packageJsonContent = fs.readFileSync(packageJsonPath, 'utf8');
+      packageJson = JSON.parse(packageJsonContent);
     } catch (e) {
       console.log(`${colors.yellow}!${colors.reset} Could not find package.json`);
       return;

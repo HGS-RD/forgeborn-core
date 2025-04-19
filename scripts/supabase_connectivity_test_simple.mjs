@@ -1,8 +1,15 @@
 #!/usr/bin/env node
 
-const https = require('https');
-const { URL } = require('url');
-const dotenv = require('dotenv');
+/**
+ * Simple Supabase Connectivity Test
+ * 
+ * A lightweight script to quickly verify Supabase connectivity
+ * using ES modules syntax.
+ */
+
+import https from 'https';
+import { URL } from 'url';
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
