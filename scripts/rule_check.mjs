@@ -25,6 +25,7 @@ const createStub = (filePath, content) => {
   fixed.push(`🛠️ Created stub: ${filePath}`);
 };
 
+// Agent directory rule checks
 fs.readdirSync(AGENTS_DIR).forEach(agent => {
   const agentPath = path.join(AGENTS_DIR, agent);
   if (!fs.statSync(agentPath).isDirectory()) return;
@@ -77,6 +78,24 @@ fs.readdirSync(AGENTS_DIR).forEach(agent => {
   }
 });
 
+// Ghost path checker for deleted folders that might be stale
+const ghostPaths = [
+  'llmmanager/.env',
+  'llmmanager/.env.example',
+  'llmmanager/.gitignore',
+  'llmmanager/agents',
+  'llmmanager/src',
+  'llmmanager/dist'
+];
+
+ghostPaths.forEach(p => {
+  const absPath = path.resolve(__dirname, '..', p);
+  if (fs.existsSync(absPath)) {
+    errors.push(`❌ Invalid file or folder: ${p}`);
+  }
+});
+
+// Final output
 if (fix && fixed.length) {
   console.log("🧹 Fix Report:");
   fixed.forEach(f => console.log(f));
