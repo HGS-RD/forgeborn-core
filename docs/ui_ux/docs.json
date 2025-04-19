@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Usage Conventions",
+    "filename": "usage_conventions.md",
+    "category": "Guidelines",
+    "description": "Defines usage boundaries between Tailwind UI and ShadCN UI components."
+  },
+  {
+    "title": "Component Naming Guide",
+    "filename": "component_naming_guide.md",
+    "category": "Guidelines",
+    "description": "Folder structure and naming conventions for UI components."
+  },
+  {
+    "title": "Contribution Guide",
+    "filename": "contribution_guide.md",
+    "category": "Contributions",
+    "description": "Rules and expectations for contributing UI/UX components and documentation."
+  },
+  {
+    "title": "Component Registry",
+    "filename": "component_registry.yaml",
+    "category": "Registry",
+    "description": "List of UI components and their source artifacts and usage locations."
+  },
+  {
+    "title": "Tailwind UI Inventory",
+    "filename": "tailwind_ui_inventory.md",
+    "category": "Inventory",
+    "description": "List of Tailwind UI Pro components used in the system and how they are customized."
+  }
+]

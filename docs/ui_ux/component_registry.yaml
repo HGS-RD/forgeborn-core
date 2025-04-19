@@ -1,0 +1,25 @@
+# component_registry.yaml
+
+- name: TriggerTile
+  source: ui
+  description: Display trust signal summary with reviewer status
+  used_in: [/triggers, /dashboard]
+  artifact: trigger_log.yaml
+
+- name: BlueprintScoreCard
+  source: ui
+  description: Shows trust score, tier badge, volatility indicator
+  used_in: [/blueprints, /dashboard]
+  artifact: blueprint_enforcement_summary.yaml
+
+- name: ReviewerApprovalModal
+  source: ui
+  description: Full-screen modal for reviewer role signoff
+  used_in: [/policy, /triggers]
+  artifact: reviewer_action_report.yaml
+
+- name: SettingsFormLayout
+  source: tailwind-ui
+  description: Responsive form layout with tabs and validation
+  used_in: [/settings]
+  artifact: null
