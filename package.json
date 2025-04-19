@@ -32,6 +32,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.2",
     "@langchain/anthropic": "^0.3.18",
     "@langchain/community": "^0.3.41",
     "@langchain/core": "^0.3.45",
@@ -39,11 +40,13 @@
     "@langchain/openai": "^0.5.5",
     "@octokit/rest": "^21.1.1",
     "@supabase/supabase-js": "^2.49.4",
+    "clsx": "^2.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "echarts": "^5.6.0",
     "echarts-for-react": "^3.0.2",
     "express": "^5.1.0",
+    "framer-motion": "^12.7.4",
     "langchain": "^0.3.22",
     "langsmith": "^0.3.18",
     "lucide-react": "^0.488.0",
