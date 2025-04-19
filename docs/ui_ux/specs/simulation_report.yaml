@@ -1,0 +1,64 @@
+# simulation_report.yaml
+version: 1.0
+simulation_plan_id: sim-042
+executed_at: 2024-04-22T15:34:00Z
+initiated_by: qa-lead-01
+policy_id: trust-policy-prod-001
+coverage: 94%
+summary:
+  total_blueprints_tested: 5
+  passed: 4
+  failed: 1
+  score_deltas:
+    bp-prod-014: +3
+    bp-prod-019: -6
+    bp-qa-007: 0
+    bp-edge-001: +2
+    bp-core-041: -11
+
+results:
+  - blueprint_id: bp-prod-014
+    agent: deploy_executor_agent
+    result: pass
+    trust_score_before: 72
+    trust_score_after: 75
+    signals:
+      fallback_rate: 0.14
+      override_ratio: 0.05
+      drift_score: 0.12
+  - blueprint_id: bp-prod-019
+    agent: validator_agent
+    result: fail
+    trust_score_before: 81
+    trust_score_after: 75
+    signals:
+      fallback_rate: 0.31
+      override_ratio: 0.08
+      drift_score: 0.09
+  - blueprint_id: bp-qa-007
+    agent: analysis_agent
+    result: pass
+    trust_score_before: 68
+    trust_score_after: 68
+    signals:
+      fallback_rate: 0.23
+      override_ratio: 0.10
+      drift_score: 0.17
+  - blueprint_id: bp-edge-001
+    agent: risk_inspector_agent
+    result: pass
+    trust_score_before: 59
+    trust_score_after: 61
+    signals:
+      fallback_rate: 0.10
+      override_ratio: 0.06
+      drift_score: 0.14
+  - blueprint_id: bp-core-041
+    agent: deploy_executor_agent
+    result: fail
+    trust_score_before: 88
+    trust_score_after: 77
+    signals:
+      fallback_rate: 0.28
+      override_ratio: 0.11
+      drift_score: 0.18

@@ -1,0 +1,46 @@
+# trust_policy.yaml
+version: 1.0
+policy_id: "trust-policy-prod-001"
+applies_to: "blueprints/*"
+
+approval:
+  quorum_required: 2
+  roles:
+    - security
+    - cto
+  allow_approver_comments: true
+
+signals:
+  trust_score:
+    min: 70
+    severity: high
+  fallback_rate:
+    max: 0.25
+    severity: medium
+  override_ratio:
+    max: 0.10
+    severity: medium
+  drift_score:
+    max: 0.20
+    severity: low
+
+enforcement:
+  gating:
+    enabled: true
+    block_on:
+      - fallback_rate
+      - override_ratio
+      - unsigned_policy
+  fallback_behavior:
+    notify_roles:
+      - qa
+      - devops
+    escalate_on_repeat: true
+    auto_escalate_after: 3
+  unsigned_policy:
+    action: block
+    message: "All trust policies must be signed before deployment."
+
+signatures:
+  required: true
+  algorithm: sha256

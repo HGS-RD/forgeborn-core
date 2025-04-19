@@ -1,0 +1,54 @@
+# blueprint_enforcement_summary.yaml
+version: 1.0
+generated_at: 2024-04-22T16:30:00Z
+
+blueprints:
+  - id: bp-prod-014
+    tier: core-product
+    trust_score: 75
+    trend: up
+    last_simulation: sim-001
+    fallback_rate: 0.14
+    override_ratio: 0.05
+    drift_score: 0.12
+    volatility: low
+
+  - id: bp-prod-019
+    tier: core-product
+    trust_score: 75
+    trend: down
+    last_simulation: sim-002
+    fallback_rate: 0.31
+    override_ratio: 0.08
+    drift_score: 0.09
+    volatility: high
+
+  - id: bp-qa-007
+    tier: internal-test
+    trust_score: 68
+    trend: stable
+    last_simulation: sim-003
+    fallback_rate: 0.23
+    override_ratio: 0.10
+    drift_score: 0.17
+    volatility: medium
+
+  - id: bp-edge-001
+    tier: experimental
+    trust_score: 61
+    trend: up
+    last_simulation: sim-004
+    fallback_rate: 0.10
+    override_ratio: 0.06
+    drift_score: 0.14
+    volatility: low
+
+  - id: bp-core-041
+    tier: critical-service
+    trust_score: 77
+    trend: down
+    last_simulation: sim-005
+    fallback_rate: 0.28
+    override_ratio: 0.11
+    drift_score: 0.18
+    volatility: high

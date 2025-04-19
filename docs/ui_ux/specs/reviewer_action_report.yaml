@@ -1,0 +1,23 @@
+# reviewer_action_report.yaml
+version: 1.0
+generated_at: 2024-04-22T16:20:00Z
+policy_id: trust-policy-prod-001
+
+actions:
+  - trigger_id: trig-prod-014
+    reviewer: security
+    approved: true
+    approved_at: 2024-04-22T15:00:00Z
+    comment: "Fallback exceeded, but overall impact low. Approved for tier downgrade."
+
+  - trigger_id: trig-core-041
+    reviewer: cto
+    approved: true
+    approved_at: 2024-04-22T15:10:00Z
+    comment: "Override breach acknowledged. Will flag for rollback if repeated."
+
+  - trigger_id: trig-core-041
+    reviewer: security
+    approved: true
+    approved_at: 2024-04-22T15:12:00Z
+    comment: "Score fell below tolerance. Approved due to quorum and rollback readiness."

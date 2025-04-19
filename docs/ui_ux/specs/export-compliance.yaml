@@ -1,0 +1,35 @@
+# export-compliance.yaml
+version: 1.0
+export_generated_at: 2024-04-22T16:45:00Z
+policy_id: trust-policy-prod-001
+export_id: exp-2024-0422-01
+
+snapshot:
+  policy_hash: sha256:a1b2c3d4e5f6
+  simulation_plan: sim-042
+  blueprint_count: 5
+  simulation_pass_rate: 80%
+  total_triggers: 2
+  approved_triggers: 2
+  quorum_satisfied: true
+  score_stability_window_days: 7
+
+export_files:
+  - filename: trust_policy.yaml
+    sha256: d5a4f6b2c3e8e9f1...
+  - filename: simulation_report.yaml
+    sha256: 82d1f4f8e6f93a21...
+  - filename: reviewer_action_report.yaml
+    sha256: 995acddfe9ccba71...
+  - filename: trigger_log.yaml
+    sha256: 3e7fc612d04574e5...
+
+reviewers_signed:
+  - role: security
+    signed_at: 2024-04-22T16:20:00Z
+  - role: cto
+    signed_at: 2024-04-22T16:22:00Z
+
+signature_verification:
+  status: verified
+  method: sha256
