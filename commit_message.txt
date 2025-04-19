@@ -1,0 +1,9 @@
+fix: naming and structure compliance for phase 19.2
+
+- renamed agent directories to match *_agent_vX pattern
+- converted .txt log files to .json format
+- migrated legacy .js and .cjs scripts to .mjs ES modules
+- removed duplicate _core.mjs agent logic files
+- added structure fix report documentation
+
+Tag: governance_observer_agent_v1

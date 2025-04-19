@@ -8,3 +8,4 @@ memory/.forgeborn/github_config.json
 
 # LangGraph API
 .langgraph_api
+/devtools/
