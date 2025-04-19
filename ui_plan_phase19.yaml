@@ -1,0 +1,139 @@
+# ui_plan_phase19.yaml
+# UADL UI Staging and Navigation Plan
+# Phase 19 of Forgeborn Development Plan
+# Generated: 2025-04-19
+
+# Navigation Structure based on UADL stages
+navigation:
+  primary_groups:
+    - id: home
+      label: Dashboard
+      route: /dashboard
+      visibility: all_roles
+    - id: explore
+      label: Blueprints
+      route: /blueprints
+      visibility: [DevOps, PO, QA]
+    - id: governance
+      label: Triggers
+      route: /triggers
+      visibility: [CTO, QA, Security]
+    - id: governance
+      label: Policy Review
+      route: /policy
+      visibility: [CTO, Security, Reviewer]
+    - id: review
+      label: Simulation
+      route: /simulation
+      visibility: [QA, Product, DevOps]
+    - id: audit
+      label: Compliance
+      route: /compliance
+      visibility: [Security, Auditor]
+    - id: system
+      label: Admin / Settings
+      route: /settings
+      visibility: [Admin]
+
+# Topbar elements
+topbar:
+  elements:
+    - type: global_search
+      description: Context-aware trust artifact search
+    - type: notifications
+      description: Badge count and preview of signal-triggered updates
+    - type: profile_menu
+      description: Role switcher, theme toggle, auth token refresh
+    - type: yaml_toggle
+      description: Quick preview of live vs draft YAML configs
+
+# UADL Stage to UI Context mapping
+uadl_stage_contexts:
+  - stage: Ideate
+    contexts: [Blueprint drafts, simulation plan templates]
+  - stage: Plan
+    contexts: [Blueprint registration, tier selection, signal targets, trigger setup]
+  - stage: Build
+    contexts: [Agent execution logs, test coverage viewer, scoring preview]
+  - stage: Validate
+    contexts: [Simulation outcomes, fallback matrix, diff visualizers]
+  - stage: Deploy
+    contexts: [CI badge view, commit approvals, rollback visibility]
+  - stage: Monitor
+    contexts: [Dashboard timeline, trust score volatility, override tracker]
+
+# Panels to be implemented (based on component registry)
+panels:
+  - id: trigger_tile
+    component: TriggerTile
+    description: Display trust signal summary with reviewer status
+    used_in: [/triggers, /dashboard]
+    artifact_dependency: trigger_log.yaml
+  - id: blueprint_score_card
+    component: BlueprintScoreCard
+    description: Shows trust score, tier badge, volatility indicator
+    used_in: [/blueprints, /dashboard]
+    artifact_dependency: blueprint_enforcement_summary.yaml
+  - id: reviewer_approval_modal
+    component: ReviewerApprovalModal
+    description: Full-screen modal for reviewer role signoff
+    used_in: [/policy, /triggers]
+    artifact_dependency: reviewer_action_report.yaml
+  - id: settings_form_layout
+    component: SettingsFormLayout
+    description: Responsive form layout with tabs and validation
+    used_in: [/settings]
+    artifact_dependency: null
+
+# Frontend route mapping
+routes:
+  - path: /dashboard
+    description: Summary overview of system-wide trust posture
+    components: [TriggerTile, BlueprintScoreCard]
+    persona_access: All roles
+  - path: /blueprints
+    description: Searchable list with tier, score trend, override frequency
+    components: [BlueprintScoreCard]
+    persona_access: [DevOps, PO, QA]
+  - path: /triggers
+    description: Trigger log, reviewer history, status filters
+    components: [TriggerTile, ReviewerApprovalModal]
+    persona_access: [CTO, QA, Security]
+  - path: /policy
+    description: Diff viewer, trust policy version history, reviewer panel
+    components: [ReviewerApprovalModal]
+    persona_access: [CTO, Security, Reviewer]
+  - path: /simulation
+    description: Upload simulation plans, validate outputs, replay policy diffs
+    components: []
+    persona_access: [QA, Product, DevOps]
+  - path: /compliance
+    description: Export digests, signed reviewer history, scoring audit trail
+    components: []
+    persona_access: [Security, Auditor]
+  - path: /settings
+    description: Admin configuration interface
+    components: [SettingsFormLayout]
+    persona_access: [Admin]
+
+# UI component dependencies
+component_dependencies:
+  tailwind_ui:
+    - AuthCard
+    - SidebarWithCollapsibleNav
+    - SectionHeader
+    - FormLayoutWithTabs
+    - ActionListPanel
+  custom:
+    - TriggerTile
+    - BlueprintScoreCard
+    - ReviewerApprovalModal
+    - SettingsFormLayout
+
+# Implementation constraints and notes
+implementation_notes:
+  - Always refactor Tailwind UI components to match design tokens
+  - Avoid using Tailwind UI dialogs/popovers (replace with Radix/ShadCN)
+  - Use ShadCN for components requiring YAML awareness or interactivity
+  - Ensure responsive layout adapts to tablet and mobile views
+  - View states should be preserved across devices using role-aware local storage
